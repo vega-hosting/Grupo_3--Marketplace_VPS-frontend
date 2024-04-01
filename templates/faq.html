@@ -10,7 +10,7 @@
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="../css/style-landing-page.css" />
+    <link rel="stylesheet" href="../css/style-faq.css"/>
   </head>
   <body>
     <nav
@@ -55,8 +55,7 @@
               <p class="text-center fw-semibold fs-6">Inicie sesión como</p>
               <p class="text-center">
                 <a
-                  href="./login-user.html"
-                  href="#"
+                  href="inicio-sesion-usuario.html"
                   class="btn fw-bold rounded-5"
                   id="boton-usuario-popover"
                   >Usuario</a
@@ -64,7 +63,6 @@
               </p>
               <p class="text-center">
                 <a
-                  href="./login-admin.html"
                   href="#"
                   class="btn fw-bold rounded-5"
                   id="boton-admin-popover"
@@ -84,31 +82,72 @@
       </div>
     </nav>
 
-    <div class="container-fluid" id="presentacion">
-      <div class="p-5 col-md-6">
-        <h3 class="fw-bold">Vega Hosting</h3>
-        <br />
-        <p class="fw-semibold">
-          ¡Bienvenidos a nuestra compañía de vanguardia en servicios de VPS! En
-          un mundo digital cada vez más interconectado, ofrecemos soluciones que
-          van más allá de las expectativas. Con nuestra tecnología de punta y un
-          equipo dedicado, brindamos a nuestros clientes la llave hacia un
-          universo de posibilidades infinitas en el mundo virtual. Desde la
-          flexibilidad incomparable hasta el rendimiento excepcional, cada uno
-          de nuestros servicios de Virtual Private Server (VPS) está diseñado
-          para superar las expectativas y llevar tus proyectos al siguiente
-          nivel. Únete a nosotros mientras desafiamos los límites de lo que es
-          posible en el ciberespacio. ¡El futuro te espera con nuestras
-          soluciones de VPS!
-        </p>
+    <div class="grid"></div>
+
+    <div class="container-fluid p-3 mt-5 mb-5" id="seccion-faq">
+      <h4>Preguntas frecuentes</h4>
+      <br />
+      <div class="row justify-content-center" id="justificado">
+        <div class="col-md-5 mx-4">
+          <h6><strong>Q:</strong> ¿Qué es un servidor VPS y cómo funciona?</h6>
+          <p>
+            <strong>A:</strong> Un servidor VPS es como tener tu propio espacio
+            en internet. Funciona compartiendo un gran servidor en partes más
+            pequeñas, como apartamentos en un edificio. Cada parte es
+            independiente y te ofrece recursos como si fuera tu propio servidor,
+            pero a un costo más bajo que uno dedicado. Es una manera flexible y
+            económica de alojar tu sitio web o aplicaciones en línea.
+          </p>
+          <br /><br />
+          <h6>
+            <strong>Q:</strong> ¿Es posible escalar los recursos (como CPU, RAM,
+            almacenamiento) en el futuro si lo necesito?
+          </h6>
+          <p>
+            <strong>A:</strong> Sí, en la mayoría de los casos, es posible
+            escalar los recursos de tu servidor VPS según tus necesidades. Esto
+            significa que si en algún momento necesitas más potencia de
+            procesamiento, memoria RAM o espacio de almacenamiento, puedes
+            solicitar una actualización de tu plan. Nuestro equipo técnico
+            estará disponible para ayudarte con este proceso y asegurarse de que
+            tu servidor tenga los recursos adecuados para satisfacer tus
+            requisitos en todo momento.
+          </p>
+        </div>
+
+        <div class="col-md-5 mx-4">
+          <h6>
+            <strong>Q:</strong> ¿Cuáles son las ventajas de un servidor VPS
+            sobre otras opciones de alojamiento?
+          </h6>
+          <p>
+            <strong>A:</strong> Un servidor VPS es una opción de alojamiento que
+            ofrece más privacidad y control que el alojamiento compartido. Te
+            brinda tus propios recursos dedicados, lo que significa que no te
+            verás afectado por otros usuarios en el servidor. Además, puedes
+            ajustar fácilmente los recursos según tus necesidades. En pocas
+            palabras, un servidor VPS te da más flexibilidad y rendimiento que
+            otras opciones de alojamiento compartido.
+          </p>
+          <br />
+          <h6>
+            <strong>Q:</strong> ¿Cómo se factura el servicio? ¿Es mensual, anual
+            u otro tipo de plan?
+          </h6>
+          <p>
+            <strong>A:</strong> Ofrecemos flexibilidad en la facturación para
+            adaptarnos a las necesidades de nuestros clientes. Tenemos opciones
+            de facturación mensual, trimestral, semestral y anual. Esto
+            significa que puedes elegir la duración que mejor se ajuste a tus
+            necesidades y presupuesto. Si prefieres pagar mes a mes para mayor
+            flexibilidad, o si deseas aprovechar descuentos por compromisos a
+            largo plazo, tenemos opciones para ti.
+          </p>
+        </div>
       </div>
     </div>
 
-    <div class="container-fluid">
-      <h2 class="m-3 fw-bold" style="color: #07155e">Comentarios</h2>
-    </div>
-
-    <footer class="fixed-bottom">
+    <footer class="mt-auto">
       <div class="container-fluid text-white" style="background-color: #043d6c">
         <div class="row">
           <div class="col-4 text-start p-2">
@@ -124,7 +163,9 @@
 
           <div class="col-6 text-end p-2">
             <br /><br />
-            <a href="faq.html" class="text-white fw-semibold">Preguntas frecuentes</a>
+            <a href="faq.html" class="text-white fw-semibold"
+              >Preguntas frecuentes</a
+            >
           </div>
         </div>
       </div>
