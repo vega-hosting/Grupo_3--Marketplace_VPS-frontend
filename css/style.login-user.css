@@ -1,5 +1,6 @@
 body{
-    background-color: rgb(249, 251, 252);
+    background:linear-gradient(150deg,#0066ff,#53bcf9);
+    height: 100vh;
 }
 
 .container{
@@ -50,10 +51,11 @@ body{
     margin-top: 20px;
     position: relative;
     left: 255px;
-    top: -250px;
+    top: -390px;
 }
 
 .logo-container img {
-    width: 200px;
+    width: 400px;
     height: auto;
+    border-radius: 25px;
 }
