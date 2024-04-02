@@ -1,0 +1,42 @@
+#usuario {
+    color: white;
+    margin-right: 100px;
+    font-size: larger;
+    font-weight: 700;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+}
+
+#avatar {
+    width: 3rem;
+    height: 3rem;
+    margin-right: 10px;
+}
+
+#titulo-plan{
+    background-color: #07155E;
+    color: white;
+    font-size: xx-large;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+}
+
+#desc-plan{
+    background-color: rgba(10, 211, 255, 0.5);
+    font-size: larger;
+    font-weight: 500;
+    padding: 35px;
+}
+
+#icono{
+    height: 50%;
+    width: 60%;
+}
+
+#boton-plan{
+    border-radius: 45px;
+    font-size: larger;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    padding: 10px 30px;
+}
