@@ -1,0 +1,82 @@
+#usuario {
+  color: white;
+  margin-right: 100px;
+  font-size: larger;
+  font-weight: 700;
+  font-family: Arial, Helvetica, sans-serif;
+  text-decoration: none;
+}
+
+#avatar {
+  width: 3rem;
+  height: 3rem;
+  margin-right: 10px;
+}
+
+#fondo {
+  background: linear-gradient(#0084ff, #0ad3fe);
+  border-radius: 25px;
+  margin-top: 3.125rem;
+  margin-bottom: 3.125rem;
+  width: 70%;
+  height: 42.5rem;
+  padding: 30px;
+}
+
+h4 {
+  font-weight: 700;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+label {
+  color: white;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: large;
+  margin-bottom: 5px;
+}
+
+input {
+  width: 75%;
+  height: 2.5rem;
+  border: none;
+  border-radius: 5px;
+  padding-left: 10px;
+}
+
+#selecionador {
+  width: 75%;
+  height: 2.5rem;
+  border: none;
+  border-radius: 5px;
+  padding-left: 10px;
+}
+
+#config-server {
+  width: 50%;
+  padding-left: 20px;
+  padding-top: 20px;
+}
+
+#boton-continuar {
+  color: #07155e;
+  border: none;
+  font-weight: 700;
+  font-size: larger;
+  float: right;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#boton-continuar:hover {
+  background-color: #07155e;
+  color: white;
+  border: none;
+  font-weight: 700;
+  font-size: larger;
+  float: right;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+}
