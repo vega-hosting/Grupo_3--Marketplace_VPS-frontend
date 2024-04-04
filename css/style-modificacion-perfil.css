@@ -1,0 +1,46 @@
+#fondo{
+    background: linear-gradient(#0084FF,#0084FF,#0AD3FF);
+    width: 80%;
+    height: 30rem;
+    margin-top: 100px;
+    margin-bottom: 50px;
+    padding: 20px;
+    border-radius: 30px;
+    flex-wrap: wrap;
+}
+
+#formulario{
+    width: 50%;
+    color: white;
+    font-weight: 600;
+    font-size: large;
+    padding-left: 20px;
+    padding-top: 20px;
+    flex-wrap: wrap;
+    
+}
+
+#btn{
+    flex: -1;
+    flex-wrap: wrap;
+    float: right;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 30px;
+    position: relative;
+    height: 5rem;
+    width:50%;  
+    top: 100px;  
+    right: 150px;
+}
+input{
+    width: 75%;
+    height: 2.5rem;
+    border: none;
+    border-radius: 5px;
+    padding-left: 10px;
+    
+}
+#container{
+    position: relative;
+    left: 3rem;
+}
