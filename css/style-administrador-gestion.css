@@ -44,3 +44,15 @@
 #desc-user{
     color: black;
 }
+
+.custom{
+    --bs-popover-bg:rgb(5, 182, 70);
+    --bs-popover-border-color: white;
+    padding: 10px;
+}
+
+#boton-usuario-popover{
+    background-color: #ffffff;
+    width: 150px;
+    height: 40px;
+}
