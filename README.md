@@ -10,3 +10,29 @@ Ignacio Uribe (planes): CRUD de sistema de planes, configuracion de servidor, si
 Nicolas Llancaqueo (administrador): Implementacion de seguridad/autenticacion para inicio de sesion, gestion/eliminacion de usuarios.
 
 Tareas en conjunto (cliente): sistema de inicio de sesion, registro de usuario, creacion de testimonios/comentarios, modificacion del perfil.
+
+
+# vega-hosting
+
+## Project setup
+```
+npm install
+```
+
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
+
+### Compiles and minifies for production
+```
+npm run build
+```
+
+### Lints and fixes files
+```
+npm run lint
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
