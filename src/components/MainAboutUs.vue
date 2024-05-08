@@ -1,5 +1,5 @@
 <template>
-    <footer class="container-fluid align-items-center footer-div bg-1">
+    <footer class="container-fluid align-items-center bg-footer">
         <div class="container-fluid text-white">
             <div class="row">
                 <div class="col-4 text-start p-2">
@@ -15,7 +15,7 @@
 
                 <div class="col-6 text-end p-2">
                     <br /><br />
-                    <RouterLink class="text-white fw-semibold">Preguntas frecuentes</RouterLink>
+                    <RouterLink to="/faq" class="text-white fw-semibold">Preguntas frecuentes</RouterLink>
                 </div>
             </div>
         </div>
@@ -23,11 +23,8 @@
 </template>
 
 <style scoped>
-.bg-1 {
+.bg-footer {
     background-color: #043d6c;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
 }
 </style>
 
