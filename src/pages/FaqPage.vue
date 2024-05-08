@@ -92,11 +92,6 @@
 </template>
 
 <style scoped>
-.page-container {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
 
 #seccion-faq {
     background-color: #0084FF;
@@ -118,10 +113,6 @@
 
 #justificado {
     text-align: justify;
-}
-
-.main-about-us {
-    margin-top: auto;
 }
 </style>
 
