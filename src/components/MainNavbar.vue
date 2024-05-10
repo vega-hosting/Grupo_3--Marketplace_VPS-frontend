@@ -27,8 +27,7 @@
             </p>
           </div>
         </div>
-
-        <RouterLink to="/registro" class="btn btn-light btn-m fw-bold m-1 secondary-text">
+        <RouterLink to="/register" class="btn btn-light btn-m fw-bold m-1 secondary-text">
           Registrarse
         </RouterLink>
       </div>
