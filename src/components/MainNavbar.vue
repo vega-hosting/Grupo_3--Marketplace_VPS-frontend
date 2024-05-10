@@ -16,29 +16,26 @@
             <br /><br />
             <p class="text-center fw-semibold fs-6">Inicie sesión como</p>
             <p class="text-center">
-              <RouterLink class="btn fw-bold rounded-5" id="boton-usuario-popover">
+              <RouterLink to="/login" class="btn fw-bold rounded-5" id="boton-usuario-popover">
                 Usuario
               </RouterLink>
-              <!--Falta agregar la ruta to hacia inicio de sesion usuario-->
             </p>
             <p class="text-center">
-              <!--Falta agregar la ruta to hacia inicio de sesion administrador-->
-              <RouterLink class="btn fw-bold rounded-5" id="boton-admin-popover">
+              <RouterLink to="/loginAdmin" class="btn fw-bold rounded-5" id="boton-admin-popover">
                 Administrador
               </RouterLink>
-              
             </p>
           </div>
         </div>
 
-        <!--Falta agregar la ruta to hacia registro usuario-->
-        <RouterLink class="btn btn-light btn-m fw-bold m-1 secondary-text">
+        <RouterLink to="/registro" class="btn btn-light btn-m fw-bold m-1 secondary-text">
           Registrarse
         </RouterLink>
       </div>
     </div>
   </nav>
 </template>
+
 
 <style scoped>
 .primary-bg-custom {
@@ -48,6 +45,7 @@
 .secondary-text {
   color: #07155e;
 }
+
 .popover {
   position: absolute;
   border: 1px solid;
