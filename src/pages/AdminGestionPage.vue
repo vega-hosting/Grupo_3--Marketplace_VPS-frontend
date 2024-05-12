@@ -3,11 +3,11 @@
         <MainNavbarAdmin />
         <div class="container-fluid ">
             <div class="row text-center">
+            <!--contenedor opciones-->
                 <div class="col-md-3 rounded-4" id="container">
                     <img src="../assets/settings.png" id="img-setting" class="img-fluid">
 
-                    <router-link to="/adminStock" class="btn fw-bold btn-light rounded-4 btn-option">Ver
-                        Stock</router-link>
+                    <router-link to="/adminStock" class="btn fw-bold btn-light rounded-4 btn-option">Ver Stock</router-link>
                     <br>
                     <br>
                     <router-link to="/opcion2" class="btn fw-bold btn-light rounded-4 btn-option">Opcion 2</router-link>
@@ -19,7 +19,7 @@
                     <router-link to="/adminGestion" class="btn fw-bold btn-light rounded-4 btn-option">Gestion
                         Usuario</router-link>
                 </div>
-
+                <!--contenedor gestion-->
                 <div class="col rounded-4 fw-bold" id="container">
                     <div id="tittle">
                         <p>Gestion usuarios</p>
