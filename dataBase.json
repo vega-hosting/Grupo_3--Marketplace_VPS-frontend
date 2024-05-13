@@ -1,0 +1,28 @@
+{
+    "plans": [
+        {
+            "id": 1,
+            "name": "VPS-1",
+            "vcore": 1,
+            "ram": 2,
+            "storage": 30,
+            "bus": 500
+        },
+        {
+            "id": 2,
+            "name": "VPS-2",
+            "vcore": 2,
+            "ram": 4,
+            "storage": 60,
+            "bus": 500
+        },
+        {
+            "id": 3,
+            "name": "VPS-3",
+            "vcore": 4,
+            "ram": 8,
+            "storage": 120,
+            "bus": 500
+        }
+    ]
+}

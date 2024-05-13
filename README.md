@@ -14,6 +14,11 @@ Tareas en conjunto (cliente): sistema de inicio de sesion, registro de usuario, 
 
 # vega-hosting
 
+## Iniciar JSON Server API
+```
+json-server --watch dataBase.json
+```
+
 ## Project setup
 ```
 npm install
