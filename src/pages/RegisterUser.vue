@@ -11,21 +11,22 @@
                                     <div class="mb-3">
                                         <label>Nombre completo</label>
                                         <br>
-                                        <input type="text" class="p-2" v-model="nameUser" placeholder="Nombre completo">
+                                        <input type="text" class="p-2" v-model="nameUser" placeholder="Nombre completo"
+                                            required>
                                     </div>
                                     <!--Email del usuario-->
                                     <div class="mb-3">
                                         <label>Correo electrónico</label>
                                         <br>
                                         <input type="email" class="p-2" placeholder="Ej: nombre@dominio.com"
-                                            v-model="emailUser">
+                                            v-model="emailUser" required>
                                     </div>
                                     <!--N° de telefono-->
                                     <div class="mb-3">
                                         <label>N° Telefonico</label>
                                         <br>
                                         <input type="tel" class="p-2" placeholder="Ej: +1 111 111 1111"
-                                            pattern="\+\d{1,3}\s?\d{3}\s?\d{3}\s?\d{4}" v-model="telUser">
+                                            pattern="\+\d{1,3}\s?\d{3}\s?\d{3}\s?\d{3,4}" v-model="telUser" required>
                                     </div>
                                     <!--Nombre de la compañia asociada al usuario-->
                                     <div class="mb-3">
@@ -43,19 +44,20 @@
                                     <div class="mb-3">
                                         <label>Ciudad</label>
                                         <br>
-                                        <input type="text" class="p-2" placeholder="Ciudad" v-model="cityUser">
+                                        <input type="text" class="p-2" placeholder="Ciudad" v-model="cityUser" required>
                                     </div>
                                     <!--Direccion del usuario-->
                                     <div class="mb-3">
                                         <label>Dirección</label>
                                         <br>
-                                        <input type="text" class="p-2" v-model="addressUser" placeholder="Dirección">
+                                        <input type="text" class="p-2" v-model="addressUser" placeholder="Dirección"
+                                            required>
                                     </div>
                                     <!--contraseña del usuario-->
                                     <div class="mb-3">
                                         <label>Contraseña</label>
                                         <br>
-                                        <input type="password" class="p-2" v-model="passwordUser">
+                                        <input type="password" class="p-2" v-model="passwordUser" required>
                                     </div>
                                     <!--confirmacion de la contraseña del usuario-->
                                     <div class="mb-3">
@@ -63,7 +65,7 @@
                                             Confirmar contraseña
                                         </label>
                                         <br>
-                                        <input type="password" class="p-2" v-model="passConfirm">
+                                        <input type="password" class="p-2" v-model="passConfirm" required>
                                     </div>
                                     <p v-if="passwordUser !== passConfirm" class="pass-dont-match">
                                         Las contraseñas no coinciden.
