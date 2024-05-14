@@ -23,7 +23,11 @@
                         <div class="col-md-6 mb-3 mb-md-0">
                             <img src="../assets/loginVegaHosting.png" id="img" alt="Imagen" class="img-fluid mb-3">
                             <div class="text-center">
-                                <button type="submit" id="btn" class="btn btn-primary btn-light">Iniciar sesión</button>
+                                <p class="text-center">
+                                    <RouterLink to="/adminGestion" class="btn fw-bold btn-light rounded" id="boton-admin">
+                                        Iniciar sesion
+                                    </RouterLink>
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -37,7 +41,7 @@
 
 </script>
 
-<style>
+<style scoped>
 #card-body {
     background-color: green;
     border-radius: 25px;
@@ -48,10 +52,11 @@
     margin-right: auto;
 }
 
-#btn {
-    margin-top: 1rem;
+#boton-admin {
+    width: 150px;
+    height: 40px;
     position: relative;
-    top: -30px;
+    top: -1rem;
 }
 
 #img {

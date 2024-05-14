@@ -6,6 +6,8 @@ import LoginPageAdmin from "@/pages/LoginPageAdmin.vue";
 import RegisterUser from "@/pages/RegisterUser.vue";
 import PlansPage from "@/pages/PlansPage.vue";
 import ConfigVpsPage from "@/pages/ConfigVpsPage.vue";
+import AdminGestion from "@/pages/AdminGestionPage.vue";
+import AdminStock from "@/pages/AdminStockPage.vue";
 
 const routes = [
   { path: "/", component: HomePage },
@@ -15,6 +17,9 @@ const routes = [
   { path: "/register", component: RegisterUser },
   { path: "/plans", component: PlansPage },
   { path: "/config-vps", component: ConfigVpsPage },
+  { path: "/plans", component: PlansPage},
+  { path: "/adminGestion", component: AdminGestion },
+  { path: "/adminStock", component: AdminStock },
 ];
 
 export const router = createRouter({
