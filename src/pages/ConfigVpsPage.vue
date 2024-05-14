@@ -14,14 +14,15 @@
                                     <div class="mb-5">
                                         <label>Hostname</label>
                                         <br>
-                                        <input type="text" class="p-2" placeholder="Hostname" required>
+                                        <input type="text" class="p-2" placeholder="Hostname" v-model="hostname"
+                                            required>
                                     </div>
                                     <!--Sistema Operativo-->
                                     <div class="mb-5">
                                         <label>Sistema operativo</label>
                                         <br>
-                                        <select class="form-select" required>
-                                            <option selected>---</option>
+                                        <select class="form-select" v-model="os" required>
+                                            <option value="">---</option>
                                             <option value="CentOs">CentOs</option>
                                             <option value="Debian">Debian</option>
                                             <option value="Ubuntu">Ubuntu</option>
@@ -33,7 +34,7 @@
                                     <div class="mb-3">
                                         <label>Contraseña de administrador</label>
                                         <br>
-                                        <input type="password" class="p-2" required>
+                                        <input type="password" class="p-2" v-model="passAdmin" required>
                                     </div>
                                 </div>
                             </div>
@@ -43,8 +44,8 @@
                                     <div class="mb-5">
                                         <label>(Opcional) Agregar vCore</label>
                                         <br>
-                                        <select class="form-select">
-                                            <option selected>---</option>
+                                        <select class="form-select" v-model="additionalVcore">
+                                            <option value="">---</option>
                                             <option value="1vCore $3.000 CLP">1vCore $3.000 CLP</option>
                                             <option value="2vCore $6.000 CLP">2vCore $6.000 CLP</option>
                                             <option value="3vCore $9.000 CLP">3vCore $9.000 CLP</option>
@@ -53,8 +54,8 @@
                                     <div class="mb-5">
                                         <label>(Opcional) Agregar RAM</label>
                                         <br>
-                                        <select class="form-select">
-                                            <option selected>---</option>
+                                        <select class="form-select" v-model="additionalRam">
+                                            <option value="">---</option>
                                             <option value="2 GB $2.000 CLP">2 GB $2.000 CLP</option>
                                             <option value="4 GB $4.000 CLP">4 GB $4.000 CLP</option>
                                             <option value="6 GB $6.000 CLP">6 GB $6.000 CLP</option>
@@ -64,15 +65,15 @@
                                 <div class="col-md-6">
                                     <label>(Opcional) Agregar memoria SSD</label>
                                     <br>
-                                    <select class="form-select">
-                                        <option selected>---</option>
+                                    <select class="form-select" v-model="additionalStorage">
+                                        <option value="">---</option>
                                         <option value="25 GB $2.000 CLP">25 GB $2.000 CLP</option>
                                         <option value="50 GB $4.000 CLP">50 GB $4.000 CLP</option>
                                         <option value="100 GB $8.000 CLP">100 GB $8.000 CLP</option>
                                     </select>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-light m-4" id="continue-button">
+                            <button @click="saveConfig" class="btn btn-light m-4" id="continue-button">
                                 Continuar
                             </button>
                         </form>
@@ -148,4 +149,34 @@ select {
 <script setup>
 import UserNavbar from '@/components/UserNavbar.vue';
 import MainAboutUs from '@/components/MainAboutUs.vue';
+
+import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+
+const hostname = ref('');
+const os = ref('');
+const passAdmin = ref('');
+const additionalVcore = ref('');
+const additionalRam = ref('');
+const additionalStorage = ref('');
+
+console.log(localStorage.plan);
+
+function saveConfig() {
+
+    const config = {
+        hostname: hostname.value,
+        os: os.value,
+        passAdmin: passAdmin.value,
+        additionalVcore: additionalVcore.value,
+        additionalRam: additionalRam.value,
+        additionalStorage: additionalStorage.value
+    };
+
+    localStorage.setItem('configVps', JSON.stringify(config));
+
+    router.push({ path: '/' });
+}
 </script>
