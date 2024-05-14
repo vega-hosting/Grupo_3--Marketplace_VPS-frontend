@@ -8,8 +8,7 @@
             <div class="right-align">
                 <RouterLink class="user">
                     <img src="../assets/Avatar.png" class="img-fluid img-avatar" />
-                    <!--Hay que configurar el get a la Api para obtener los datos del usuario (id y Nombre)-->
-                    Usuario
+                    {{ userData.name }}
                 </RouterLink>
             </div>
         </div>
@@ -47,23 +46,20 @@
 </style>
 
 <script setup>
-/*
-import {ref} from 'vue';
+import axios from 'axios';
+import { ref } from 'vue';
 
 const userData = ref('');
 
-
-
 try {
 
-    const response = await axios.get(); //Se tiene que pasar la id del usuario
+    const response = await axios.get(`http://localhost:3000/user/1`); //Se tiene que pasar la id del usuario
     userData.value = response.data;
     console.log(userData.value);
-    
+
 } catch (error) {
     console.error('Error al obtener los datos', error);
     alert('Ocurrio un error al obtener los datos del usuario');
 }
-*/
 
 </script>
