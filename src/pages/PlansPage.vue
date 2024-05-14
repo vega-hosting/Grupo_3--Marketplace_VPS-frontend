@@ -19,7 +19,7 @@
                             </div>
                             <br />
                             <div class="text-center">
-                                <RouterLink class="btn btn-light" id="boton-plan">$ {{ plan.price }} CLP</RouterLink>
+                                <button @click="storageIdPlan(plan.id)" class="btn btn-light" id="boton-plan">$ {{ plan.price }} CLP</button>
                             </div>
                         </div>
                     </div>
@@ -70,18 +70,24 @@ import MainAboutUs from '@/components/MainAboutUs.vue';
 
 import axios from 'axios';
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
 
 const plans = ref([]);
 
 try {
-
     const response = await axios.get(`http://localhost:3000/plans`);
     plans.value = response.data;
     console.log(plans.value);
-
 } catch (error) {
     console.error('Error al obtener los datos de los planes', error);
     alert('Ocurrio un error al obtener los datos de los planes');
+}
+
+function storageIdPlan( idPlan ){
+    localStorage.setItem( 'plan' , idPlan );
+    router.push({ path: '/config-vps' });
 }
 
 </script>
