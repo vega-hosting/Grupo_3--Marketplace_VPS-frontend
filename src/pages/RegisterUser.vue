@@ -160,7 +160,7 @@ label {
 
 <!--Parte Logica-->
 <script setup>
-//import  axios  from 'axios';
+import axios from 'axios';
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 
@@ -188,9 +188,10 @@ async function registerUser() {
                 password: passwordUser.value
             };
 
-            //const response = await axios.post( ,newUser);
+            const response = await axios.post(`http://localhost:3000/user`, newUser);
 
             console.log(newUser);
+            console.log(response.data);
 
             router.push({ path: '/' });
         } else {
