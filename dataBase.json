@@ -1,0 +1,53 @@
+{
+  "plans": [
+    {
+      "id": "1",
+      "name": "VPS-1",
+      "vcore": 1,
+      "ram": 2,
+      "storage": 30,
+      "bus": 500,
+      "price": 3990
+    },
+    {
+      "id": "2",
+      "name": "VPS-2",
+      "vcore": 2,
+      "ram": 4,
+      "storage": 60,
+      "bus": 500,
+      "price": 6990
+    },
+    {
+      "id": "3",
+      "name": "VPS-3",
+      "vcore": 4,
+      "ram": 8,
+      "storage": 120,
+      "bus": 500,
+      "price": 9990
+    }
+  ],
+  "user": [
+    {
+      "id": "1",
+      "name": "Usuario 1",
+      "email": "user1@google.com",
+      "tel": "+1 222 333 4444",
+      "nameCompany": "Company 1",
+      "city": "Springfield",
+      "address": "742 Evergreen Terrace",
+      "password": "987654321"
+    },
+    {
+      "id": "afe5",
+      "name": "Tester",
+      "email": "Tester@google.com",
+      "telephone": "+2 335 466 8452",
+      "name_company": "Compañia Tester",
+      "city": "City",
+      "address": "Address",
+      "password": "12345"
+    }
+  ]
+}
