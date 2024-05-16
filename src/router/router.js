@@ -8,7 +8,8 @@ import PlansPage from "@/pages/PlansPage.vue";
 import ConfigVpsPage from "@/pages/ConfigVpsPage.vue";
 import AdminGestion from "@/pages/AdminGestionPage.vue";
 import AdminStock from "@/pages/AdminStockPage.vue";
-import ShoppingPage from "@/pages/ShoppingPage.vue"
+import ShoppingPage from "@/pages/ShoppingPage.vue";
+import SucessfulPurchase from "@/pages/SucessfulPurchase.vue";
 
 const routes = [
   { path: "/", component: HomePage },
@@ -21,6 +22,7 @@ const routes = [
   { path: "/config-vps", component: ConfigVpsPage },
   { path: "/adminGestion", component: AdminGestion },
   { path: "/adminStock", component: AdminStock },
+  { path: "/shopping/success", component: SucessfulPurchase }
 ];
 
 export const router = createRouter({

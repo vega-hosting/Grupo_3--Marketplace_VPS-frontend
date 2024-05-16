@@ -168,13 +168,15 @@ import MainAboutUs from '@/components/MainAboutUs.vue';
 
 import axios from 'axios';
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
 
 const idPlan = localStorage.plan;
 const infoServer = JSON.parse(localStorage.getItem('configVps'));
 const user = localStorage.user;
 
 const billing = ref('1 Mes');
-
 const plan = ref('');
 
 try {
@@ -279,6 +281,7 @@ async function purchasePlan() {
 
         await axios.post(`http://localhost:3000/subscription`, infoPurchase);
 
+        router.push('/shopping/success');
     } catch (error) {
         console.error('Error al registrar la compra', error);
         alert('Ocurrio un error al registrar la compra');
