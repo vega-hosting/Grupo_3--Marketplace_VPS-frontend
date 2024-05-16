@@ -125,4 +125,50 @@ label {
 <script setup>
 import UserNavbar from '@/components/UserNavbar.vue';
 import MainAboutUs from '@/components/MainAboutUs.vue';
+
+import axios from 'axios';
+import { ref } from 'vue';
+
+const user = ref('');
+
+const nameUser = ref('');
+const emailUser = ref('');
+const telUser = ref('');
+const nameCompany = ref('');
+const cityUser = ref('');
+const addressUser = ref('');
+
+try {
+    const response = await axios.get(`http://localhost:3000/user/${localStorage.user}`);
+    user.value = response.data;
+    nameUser.value = user.value.name;
+    emailUser.value = user.value.email;
+    telUser.value = user.value.telephone;
+    nameCompany.value = user.value.name_company;
+    cityUser.value = user.value.city;
+    addressUser.value = user.value.address
+} catch (error) {
+    console.error('Error al obtener los datos', error);
+    alert('Ocurrio un error al obtener los datos del usuario');
+}
+
+async function updateUser() {
+    try {
+        const newUser = {
+            name: nameUser.value,
+            email: emailUser.value,
+            telephone: telUser.value,
+            name_company: nameCompany.value,
+            city: cityUser.value,
+            address: addressUser.value,
+            password: user.value.password
+        };
+
+        await axios.put(`http://localhost:3000/user/${user.value.id}`,newUser);
+        window.location.reload();
+    } catch (error) {
+        console.error('Error al enviar los datos', error);
+        alert('Ocurrio un error al actualizar la información del usuario');
+    }
+}
 </script>
