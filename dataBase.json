@@ -49,5 +49,20 @@
       "address": "Address",
       "password": "12345"
     }
+  ],
+  "subscription": [
+    {
+      "id": "dd24",
+      "": "6 Meses",
+      "price": 20349,
+      "hostname": "HostTester",
+      "os": "Debian",
+      "passAdmin": "1234567890",
+      "additionalVcore": "Ninguno",
+      "additionalRam": "Ninguno",
+      "additionalStorage": "Ninguno",
+      "id_plan": "1",
+      "id_user": "1"
+    }
   ]
 }

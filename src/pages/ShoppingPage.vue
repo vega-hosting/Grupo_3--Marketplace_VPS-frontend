@@ -9,15 +9,16 @@
                     <div class="col-md-11">
                         <div class="bg-info-server">
                             <p id="info-server">
-                                <span class="fw-semibold">Hostname:</span>
+                                <span class="fw-semibold">Hostname:</span> {{ infoServer.hostname }}
                                 <br /><br />
-                                <span class="fw-semibold">Sistema operativo:</span>
+                                <span class="fw-semibold">Sistema operativo:</span> {{ infoServer.os }}
                                 <br /><br />
-                                <span class="fw-semibold">vCore adicional:</span>
+                                <span class="fw-semibold">vCore adicional:</span> {{ infoServer.additionalVcore }}
                                 <br /><br />
-                                <span class="fw-semibold">Memoria RAM adicional:</span>
+                                <span class="fw-semibold">Memoria RAM adicional:</span> {{ infoServer.additionalRam }}
                                 <br /><br />
-                                <span class="fw-semibold">Memoria de almacenamiento adicional:</span>
+                                <span class="fw-semibold">Memoria de almacenamiento adicional:</span> {{
+                                    infoServer.additionalStorage }}
                             </p>
                         </div>
                     </div>
@@ -30,7 +31,7 @@
                                         <div class="check-custom text-center">
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="billing"
-                                                    value="1 Mes" />
+                                                    v-model="billing" value="1 Mes" />
                                                 <label class="form-check-label">1 Mes</label>
                                             </div>
                                         </div>
@@ -40,8 +41,8 @@
                                         <div class="check-custom text-center">
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="billing"
-                                                    value="3 Mes" />
-                                                <label class="form-check-label">3 Mes</label>
+                                                    v-model="billing" value="3 Meses" />
+                                                <label class="form-check-label">3 Meses</label>
                                                 <p class="mt-2 fw-semibold">Ahorras 8%</p>
                                             </div>
                                         </div>
@@ -51,8 +52,8 @@
                                         <div class="check-custom text-center">
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="billing"
-                                                    value="6 Mes" />
-                                                <label class="form-check-label">6 Mes</label>
+                                                    v-model="billing" value="6 Meses" />
+                                                <label class="form-check-label">6 Meses</label>
                                                 <p class="mt-2 fw-semibold">Ahorras 15%</p>
                                             </div>
                                         </div>
@@ -62,8 +63,8 @@
                                         <div class="check-custom text-center">
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="billing"
-                                                    value="12 Mes" />
-                                                <label class="form-check-label">12 Mes</label>
+                                                    v-model="billing" value="12 Meses" />
+                                                <label class="form-check-label">12 Meses</label>
                                                 <p class="mt-2 fw-semibold">Ahorras 25%</p>
                                             </div>
                                         </div>
@@ -82,21 +83,22 @@
                             </div>
                             <br>
                             <div>
-                                <h4 class="text-center fw-semibold">Plan: VPS-2</h4>
+                                <h4 class="text-center fw-semibold">Plan: {{ plan.name }}</h4>
                                 <ul>
-                                    <li>vCore: 2</li>
-                                    <li>RAM: 4GB</li>
-                                    <li>Espacio: 60 GB SSD</li>
-                                    <li>Velocidad: 500 Mbit/s</li>
+                                    <li>vCore: {{ plan.vcore }}</li>
+                                    <li>RAM: {{ plan.ram }} GB</li>
+                                    <li>Espacio: {{ plan.storage }} GB SSD</li>
+                                    <li>Velocidad: {{ plan.bus }} Mbit/s</li>
                                 </ul>
                             </div>
                             <div class="text-center">
                                 <img src="../assets/Icono plan.png" class="img-fluid" id="icon" />
                             </div>
                             <br>
-                            <h4 class="text-center fw-semibold">$6.990 CLP</h4>
+                            <h4 class="text-center fw-semibold">Total: $ {{ calculatePrice(billing) }} CLP</h4>
                             <div class="text-center">
-                                <button class="btn btn-light" id="purchase-button">Comprar</button>
+                                <button @click="purchasePlan" class="btn btn-light"
+                                    id="purchase-button">Comprar</button>
                             </div>
                         </div>
                     </div>
@@ -163,4 +165,123 @@
 <script setup>
 import UserNavbar from '@/components/UserNavbar.vue';
 import MainAboutUs from '@/components/MainAboutUs.vue';
+
+import axios from 'axios';
+import { ref } from 'vue';
+
+const idPlan = localStorage.plan;
+const infoServer = JSON.parse(localStorage.getItem('configVps'));
+const user = localStorage.user;
+
+const billing = ref('1 Mes');
+
+const plan = ref('');
+
+try {
+    const response = await axios.get(`http://localhost:3000/plans/${idPlan}`);
+    plan.value = response.data;
+} catch (error) {
+    console.error('Error al obtener los datos de los planes', error);
+    alert('Ocurrio un error al obtener los datos de los planes');
+}
+
+const priceVcoreAdd = () => {
+    switch (infoServer.additionalVcore) {
+        case "Ninguno":
+            return 0;
+
+        case "1vCore $3.000 CLP":
+            return 3000;
+
+        case "2vCore $6.000 CLP":
+            return 6000;
+
+        case "3vCore $9.000 CLP":
+            return 9000;
+    }
+}
+
+const priceRamAdd = () => {
+    switch (infoServer.additionalRam) {
+        case "Ninguno":
+            return 0;
+
+        case "2 GB $2.000 CLP":
+            return 2000;
+
+        case "4 GB $4.000 CLP":
+            return 4000;
+
+        case "6 GB $6.000 CLP":
+            return 6000;
+    }
+}
+
+const priceStorageAdd = () => {
+    switch (infoServer.additionalStorage) {
+        case "Ninguno":
+            return 0;
+
+        case "25 GB $2.000 CLP":
+            return 2000;
+
+        case "50 GB $4.000 CLP":
+            return 4000;
+
+        case "100 GB $8.000 CLP":
+            return 8000;
+    }
+}
+
+const calculatePrice = (billing) => {
+    let discount = 0;
+    let moths = 0;
+
+    switch (billing) {
+        case "1 Mes":
+            discount = 0;
+            moths = 1;
+            break;
+        case "3 Meses":
+            discount = 0.08;
+            moths = 3;
+            break;
+        case "6 Meses":
+            discount = 0.15;
+            moths = 6
+            break;
+        case "12 Meses":
+            discount = 0.25;
+            moths = 12;
+            break;
+    }
+
+    const initialPrice = plan.value.price + priceVcoreAdd() + priceRamAdd() + priceStorageAdd();
+
+    const finalPrice = initialPrice * moths * (1 - discount);
+    return Math.round(finalPrice);
+}
+
+async function purchasePlan() {
+    try {
+        const infoPurchase = {
+            time: billing.value,
+            price: calculatePrice(billing.value),
+            hostname: infoServer.hostname,
+            os: infoServer.os,
+            passAdmin: infoServer.passAdmin,
+            additionalVcore: infoServer.additionalVcore,
+            additionalRam: infoServer.additionalRam,
+            additionalStorage: infoServer.additionalStorage,
+            id_plan: plan.value.id,
+            id_user: user
+        };
+
+        await axios.post(`http://localhost:3000/subscription`, infoPurchase);
+
+    } catch (error) {
+        console.error('Error al registrar la compra', error);
+        alert('Ocurrio un error al registrar la compra');
+    }
+}
 </script>

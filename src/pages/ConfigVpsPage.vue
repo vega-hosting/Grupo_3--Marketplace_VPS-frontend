@@ -22,7 +22,7 @@
                                         <label>Sistema operativo</label>
                                         <br>
                                         <select class="form-select" v-model="os" required>
-                                            <option value="">---</option>
+                                            <option value="Ninguno">Ninguno</option>
                                             <option value="CentOs">CentOs</option>
                                             <option value="Debian">Debian</option>
                                             <option value="Ubuntu">Ubuntu</option>
@@ -45,7 +45,7 @@
                                         <label>(Opcional) Agregar vCore</label>
                                         <br>
                                         <select class="form-select" v-model="additionalVcore">
-                                            <option value="">---</option>
+                                            <option value="Ninguno">Ninguno</option>
                                             <option value="1vCore $3.000 CLP">1vCore $3.000 CLP</option>
                                             <option value="2vCore $6.000 CLP">2vCore $6.000 CLP</option>
                                             <option value="3vCore $9.000 CLP">3vCore $9.000 CLP</option>
@@ -55,7 +55,7 @@
                                         <label>(Opcional) Agregar RAM</label>
                                         <br>
                                         <select class="form-select" v-model="additionalRam">
-                                            <option value="">---</option>
+                                            <option value="Ninguno">Ninguno</option>
                                             <option value="2 GB $2.000 CLP">2 GB $2.000 CLP</option>
                                             <option value="4 GB $4.000 CLP">4 GB $4.000 CLP</option>
                                             <option value="6 GB $6.000 CLP">6 GB $6.000 CLP</option>
@@ -66,7 +66,7 @@
                                     <label>(Opcional) Agregar memoria SSD</label>
                                     <br>
                                     <select class="form-select" v-model="additionalStorage">
-                                        <option value="">---</option>
+                                        <option value="Ninguno">Ninguno</option>
                                         <option value="25 GB $2.000 CLP">25 GB $2.000 CLP</option>
                                         <option value="50 GB $4.000 CLP">50 GB $4.000 CLP</option>
                                         <option value="100 GB $8.000 CLP">100 GB $8.000 CLP</option>
@@ -156,11 +156,11 @@ import { useRouter } from 'vue-router';
 const router = useRouter();
 
 const hostname = ref('');
-const os = ref('');
+const os = ref('Ninguno');
 const passAdmin = ref('');
-const additionalVcore = ref('');
-const additionalRam = ref('');
-const additionalStorage = ref('');
+const additionalVcore = ref('Ninguno');
+const additionalRam = ref('Ninguno');
+const additionalStorage = ref('Ninguno');
 
 console.log(localStorage.plan);
 
@@ -177,6 +177,6 @@ function saveConfig() {
 
     localStorage.setItem('configVps', JSON.stringify(config));
 
-    router.push({ path: '/' });
+    router.push({ path: '/shopping' });
 }
 </script>
