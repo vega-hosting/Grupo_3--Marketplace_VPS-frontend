@@ -10,6 +10,8 @@ import AdminGestion from "@/pages/AdminGestionPage.vue";
 import AdminStock from "@/pages/AdminStockPage.vue";
 import ShoppingPage from "@/pages/ShoppingPage.vue";
 import SucessfulPurchase from "@/pages/SucessfulPurchase.vue";
+import ModifyUser from "@/pages/ModifyUser.vue";
+import SuscriptionUser from "@/pages/SuscriptionUser.vue";
 
 const routes = [
   { path: "/", component: HomePage },
@@ -22,7 +24,9 @@ const routes = [
   { path: "/config-vps", component: ConfigVpsPage },
   { path: "/adminGestion", component: AdminGestion },
   { path: "/adminStock", component: AdminStock },
-  { path: "/shopping/success", component: SucessfulPurchase }
+  { path: "/shopping/success", component: SucessfulPurchase },
+  { path: "/modify-account", component: ModifyUser },
+  { path: "/suscriptions", component: SuscriptionUser },
 ];
 
 export const router = createRouter({
