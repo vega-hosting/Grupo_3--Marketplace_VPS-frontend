@@ -50,8 +50,8 @@
 
 .user {
     color: white;
-    width: 70%;
-    margin-right: 75px;
+    width: 100%;
+    padding-right: 100px;
     font-size: larger;
     font-weight: 700;
     font-family: Arial, Helvetica, sans-serif;

@@ -59,6 +59,8 @@
                             </div>
                             <div class="col">
                                 <button type="submit" class="btn btn-light m-4" id="update-button">Guardar</button>
+                                <button @click="returnPrevPag" class="btn btn-light mt-4 mb-4"
+                                id="back-button">Volver</button>
                             </div>
                         </form>
                     </div>
@@ -120,6 +122,29 @@ label {
     padding-right: 20px;
     font-family: Arial, Helvetica, sans-serif;
 }
+
+#back-button {
+    color: #07155E;
+    border: none;
+    font-weight: 700;
+    font-size: large;
+    float: right;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#back-button:hover {
+    background-color: #07155E;
+    color: white;
+    border: none;
+    font-weight: 700;
+    font-size: large;
+    float: right;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
 </style>
 
 <script setup>
@@ -128,6 +153,8 @@ import MainAboutUs from '@/components/MainAboutUs.vue';
 
 import axios from 'axios';
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+const router = useRouter();
 
 const user = ref('');
 
@@ -170,5 +197,9 @@ async function updateUser() {
         console.error('Error al enviar los datos', error);
         alert('Ocurrio un error al actualizar la información del usuario');
     }
+}
+
+function returnPrevPag() {
+    router.back();
 }
 </script>

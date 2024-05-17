@@ -63,6 +63,19 @@
       "additionalStorage": "25 GB $2.000 CLP",
       "id_plan": "1",
       "id_user": "1"
+    },
+    {
+      "id": "1",
+      "time": "6 Meses",
+      "price": 56049,
+      "hostname": "HostTester",
+      "os": "Debian",
+      "passAdmin": "1234567890",
+      "additionalVcore": "Ninguno",
+      "additionalRam": "2 GB $2.000 CLP",
+      "additionalStorage": "Ninguno",
+      "id_plan": "2",
+      "id_user": "1"
     }
   ]
 }
