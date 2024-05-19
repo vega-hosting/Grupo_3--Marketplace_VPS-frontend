@@ -4,7 +4,7 @@
 
         <div class="container-fluid">
             <div class="row text-center">
-                <!--contenedor opciones-->
+                <!-- contenedor opciones -->
                 <div class="col-md-3 rounded-4" id="container">
                     <img src="../assets/settings.png" id="img-setting" class="img-fluid">
 
@@ -12,105 +12,54 @@
                         Stock</router-link>
                     <br>
                     <br>
-                    <router-link to="/opcion2" class="btn fw-bold btn-light rounded-4 btn-option">Opcion 2</router-link>
+                    <router-link to="/opcion2" class="btn fw-bold btn-light rounded-4 btn-option">Opción 2</router-link>
                     <br>
                     <br>
-                    <router-link to="/opcion3" class="btn fw-bold btn-light rounded-4 btn-option">Opcion 3</router-link>
+                    <router-link to="/opcion3" class="btn fw-bold btn-light rounded-4 btn-option">Opción 3</router-link>
                     <br>
                     <br>
-                    <router-link to="/adminGestion" class="btn fw-bold btn-light rounded-4 btn-option">Gestion
+                    <router-link to="/adminGestion" class="btn fw-bold btn-light rounded-4 btn-option">Gestión
                         Usuario</router-link>
                 </div>
-                <!--contenedor stock-->
+                <!-- contenedor stock -->
                 <div class="col rounded-4 fw-bold" id="container">
                     <div class="row">
                         <div class="col text-center">
                             <div id="tittle">
-                                <p>stock</p>
+                                <p>Stock</p>
                             </div>
                         </div>
-                        <!--opcion agregar un nuevo servidor-->
-                        <div class="col text-rigth">
+                        <!-- opción agregar un nuevo servidor -->
+                        <div class="col text-right">
                             <router-link to="/agregarProducto">
                                 <img src="../assets/agregar-simbolo.png" alt="Imagen agregar" id="add-product">
                             </router-link>
                         </div>
                     </div>
-
+                    <!--mostrar cartas planes mediante el uso del consumo de archivo .json-->
                     <div class="row" id="cards">
-                        <!--Primera servidor-->
-                        <div class="col-md-4">
+                        <div v-for="plan in plans" :key="plan.id" class="col-md-4">
                             <div class="card" id="tittle-plan">
                                 <div class="card-body">
-                                    <h5 class="card-title">VPS-1 (100)</h5>
+                                    <h5 class="card-title">{{ plan.name }} ({{ plan.stock }})</h5>
                                 </div>
                             </div>
                             <div class="card">
                                 <div class="card-body">
                                     <ul>
-                                        <li>vCore: 1</li>
-                                        <li>RAM: 2 GB</li>
-                                        <li>Espacio: 30 GB SSD</li>
-                                        <li>Velocidad: 500 Mbit/s</li>
+                                        <li>vCore: {{ plan.vcore }}</li>
+                                        <li>RAM: {{ plan.ram }} GB</li>
+                                        <li>Espacio: {{ plan.storage }} GB SSD</li>
+                                        <li>Velocidad: {{ plan.bus }} Mbit/s</li>
                                     </ul>
                                 </div>
                                 <div class="text-center">
                                     <img src="../assets/Icono plan.png" alt="imagen de servidor" class="img-fluid"
                                         id="icono">
                                 </div>
-                                <p id="price">$9.990 CLP</p>
+                                <p id="price">${{ plan.price }} CLP</p>
                             </div>
                         </div>
-                        <!--segundo servidor-->
-                        <div class="col-md-4">
-                            <div class="card" id="tittle-plan">
-                                <div class="card-body">
-                                    <h5 class="card-title">VPS-2 (35)</h5>
-                                </div>
-                            </div>
-                            <div class="card">
-                                <div class="card-body">
-                                    <ul>
-                                        <li>vCore: 2</li>
-                                        <li>RAM: 4 GB</li>
-                                        <li>Espacio: 60 GB SSD</li>
-                                        <li>Velocidad: 500 Mbit/s</li>
-                                    </ul>
-                                </div>
-                                <div class="text-center">
-                                    <img src="../assets/Icono plan.png" alt="imagen de servidor" class="img-fluid"
-                                        id="icono">
-                                </div>
-                                <p id="price">$6.990 CLP</p>
-                            </div>
-                        </div>
-                        <!--tercer servidor-->
-                        <div class="col-md-4">
-                            <div class="card " id="tittle-plan">
-                                <div class="card-body ">
-                                    <h5 class="card-title">VPS-3 (58)</h5>
-                                </div>
-                            </div>
-                            <div class="card text-center">
-                                <div class="card-body">
-                                    <ul>
-                                        <li>vCore: 4</li>
-                                        <li>RAM: 8 GB</li>
-                                        <li>Espacio: 120 GB SSD</li>
-                                        <li>Velocidad: 500 Mbit/s</li>
-                                    </ul>
-                                </div>
-                                <div class="text-center">
-                                    <img src="../assets/Icono plan.png" alt="imagen de servidor" class="img-fluid"
-                                        id="icono">
-                                </div>
-                                <div class="text-center">
-                                    <p id="price">$9.990 CLP</p>
-                                </div>
-
-                            </div>
-                        </div>
-
                     </div>
                 </div>
             </div>
@@ -123,8 +72,22 @@
 </template>
 
 <script setup>
+//consumo de api local .json y llamado de datos planes
 import MainAboutUsAdmin from '@/components/MainAboutUsAdmin.vue';
 import MainNavbarAdmin from '@/components/MainNavbarAdmin.vue';
+import axios from 'axios';
+import { ref } from 'vue';
+
+const plans = ref([]);
+
+try {
+    const response = await axios.get('http://localhost:3000/plans');
+    plans.value = response.data;
+} catch (error) {
+    console.error('Error al obtener los datos de los planes', error);
+    alert('Ocurrió un error al obtener los datos de los planes');
+}
+
 </script>
 
 <style scoped>
