@@ -31,9 +31,10 @@
   "user": [
     {
       "name": "Usuario 1",
-      "email": "user1@gmail.com",
       "telephone": "+1 222 333 4444",
       "name_company": "Company Tester",
+      "email": "Gabriela@google.com",
+      "nameCompany": "Company Tester",
       "city": "Springfield",
       "address": "742 Evergreen Terrace",
       "password": "987654321",
@@ -41,13 +42,33 @@
     },
     {
       "id": "afe5",
-      "name": "Tester",
+      "name": "Tester Cruz",
       "email": "Tester@google.com",
       "telephone": "+2 335 466 8452",
-      "name_company": "Compañia Tester",
+      "nameCompany": "Compañia Tester",
       "city": "City",
       "address": "Address",
       "password": "12345"
+    },
+    {
+      "id": "3",
+      "name": "Nicolas Lopez",
+      "email": "Lopez@google.com",
+      "telephone": "+1 222 333 4444",
+      "nameCompany": "Company 1",
+      "city": "Springfield",
+      "address": "742 Evergreen Terrace",
+      "password": "Hola"
+    },
+    {
+      "id": "4",
+      "name": "juan Perez",
+      "email": "Perez@google.com",
+      "telephone": "+1 222 333 4443",
+      "nameCompany": "Company 2",
+      "city": "Temuco",
+      "address": "742 Evergreen Terrace",
+      "password": "adios"
     }
   ],
   "subscription": [

@@ -23,7 +23,9 @@
                         <div class="col-md-6 mb-3 mb-md-0">
                             <img src="../assets/loginVegaHosting.png" id="img" alt="Imagen" class="img-fluid mb-3">
                             <div class="text-center">
-                                <button type="submit" id="btn" class="btn btn-primary btn-light">Iniciar sesión</button>
+                                <button @click="login" class="btn fw-bold btn-light rounded" id="btn">
+                                    Iniciar sesión
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -34,17 +36,30 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
     data() {
         return {
             username: '',
-            password: ''
+            password: '',
+            error: ''
         };
     },
     methods: {
-        login() {
-            console.log('Usuario:', this.username);
-            console.log('Contraseña:', this.password);
+        async login() {
+            try {
+                const response = await axios.get('http://localhost:3000/user');
+                const users = response.data;
+                const user = users.find(user => user.email === this.username && user.password === this.password);
+                if (user) {
+                    this.$router.push('/plans');
+                } else {
+                    this.error = 'Nombre de usuario o contraseña incorrectos';
+                }
+            } catch (error) {
+                this.error = 'Error al cargar los datos de usuario';
+            }
         }
     }
 };

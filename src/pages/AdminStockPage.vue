@@ -1,6 +1,6 @@
 <template>
     <div>
-        <MainNavbarAdmin />
+        <UserNavbarAdmin />
 
         <div class="container-fluid">
             <div class="row text-center">
@@ -72,14 +72,13 @@
 </template>
 
 <script setup>
-//consumo de api local .json y llamado de datos planes
 import MainAboutUsAdmin from '@/components/MainAboutUsAdmin.vue';
-import MainNavbarAdmin from '@/components/MainNavbarAdmin.vue';
+import UserNavbarAdmin from '@/components/UserNavbarAdmin.vue';
 import axios from 'axios';
 import { ref } from 'vue';
 
 const plans = ref([]);
-
+//consumo de api local .json y llamado de datos planes
 try {
     const response = await axios.get('http://localhost:3000/plans');
     plans.value = response.data;
