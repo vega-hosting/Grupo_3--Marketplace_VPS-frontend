@@ -41,7 +41,7 @@
                         <div v-for="plan in plans" :key="plan.id" class="col-md-4 mb-3">
                             <div class="card" id="tittle-plan">
                                 <div class="card-body">
-                                    <h5 class="card-title">{{ plan.name }} ({{ plan.stock }})</h5>
+                                    <h5 class="card-title">{{ plan.name }} ({{ plan.quantity }})</h5>
                                 </div>
                             </div>
                             <div class="card">

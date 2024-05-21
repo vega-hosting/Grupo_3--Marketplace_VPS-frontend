@@ -45,6 +45,12 @@
                                         <input type="number" class="form-control" v-model="price" placeholder="Precio"
                                             required>
                                     </div>
+                                    <!--Cantidad--->
+                                    <div class="form-group">
+                                        <label for="quantity">Cantidad</label>
+                                        <input type="number" class="form-control" v-model="quantity"
+                                            placeholder="Cantidad servidores" required>
+                                    </div>
                                 </div>
                             </div>
                             <div class="text-center">
@@ -71,6 +77,7 @@ const ram = ref(0);
 const storage = ref(0);
 const bus = ref(0);
 const price = ref(0);
+const quantity = ref(0);
 
 async function addPlan() {
     try {
@@ -80,14 +87,31 @@ async function addPlan() {
             ram: ram.value,
             storage: storage.value,
             bus: bus.value,
-            price: price.value
+            price: price.value,
+            quantity: quantity.value
         };
 
-        const response = await axios.post(`http://localhost:3000/plans`, newPlan);
+        const response = await axios.get(`http://localhost:3000/plans`);
+        const existingPlans = response.data;
 
-        console.log(response.data);
+        let existingPlan = existingPlans.find(plan =>
+            plan.name === newPlan.name &&
+            plan.vcore === newPlan.vcore &&
+            plan.ram === newPlan.ram &&
+            plan.storage === newPlan.storage &&
+            plan.bus === newPlan.bus &&
+            plan.price === newPlan.price
+        );
 
+        if (existingPlan) {
+            existingPlan.quantity += newPlan.quantity;
+            await axios.put(`http://localhost:3000/plans/${existingPlan.id}`, existingPlan);
+        } else {
+            await axios.post(`http://localhost:3000/plans`, newPlan);
+        }
+        
         router.push({ path: '/adminStock' });
+
     } catch (error) {
         console.error('Error al agregar el plan', error);
         alert('Ocurrió un error al agregar el plan');
