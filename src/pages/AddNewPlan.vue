@@ -47,7 +47,7 @@
                                     </div>
                                     <!--Cantidad--->
                                     <div class="form-group">
-                                        <label for="quantity">Cantidad</label>
+                                        <label for="quantity">Cantidad (Planes)</label>
                                         <input type="number" class="form-control" v-model="quantity"
                                             placeholder="Cantidad servidores" required>
                                     </div>
@@ -109,7 +109,7 @@ async function addPlan() {
         } else {
             await axios.post(`http://localhost:3000/plans`, newPlan);
         }
-        
+
         router.push({ path: '/adminStock' });
 
     } catch (error) {
