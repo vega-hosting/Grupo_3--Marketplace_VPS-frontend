@@ -59,16 +59,21 @@
                                 </div>
                                 <p id="price">${{ plan.price }} CLP</p>
                             </div>
-                            <button @click="showDeletePlanConfirmation(plan.id)" class="btn btn-danger">Eliminar
+                            <button @click="showDeletePlanConfirmation(plan.id, $event)" class="btn btn-danger">Eliminar
                                 Plan</button>
-
                         </div>
-                        <div v-if="showPlanPopover" class="shadow-lg popover">
+                        <div v-if="showPlanPopover" :style="popoverStyles" id="windows" class="shadow-lg popover">
                             <div class="text-white p-2 primary-bg-custom rounded-3">
-                                <p class="text-center fw-semibold fs-6">¿Eliminar este plan?</p>
+                                <p class="text-center fw-semibold fs-6">¿Eliminar plan?</p>
                                 <p class="text-center">
-                                    <button @click="deletePlan" class="btn btn-danger">Eliminar</button>
-                                    <button @click="cancelDeletePlan" class="btn btn-secondary">Cancelar</button>
+                                    <button @click="deletePlan" id="boton-plan-eliminar"
+                                    class="btn btn-danger fw-bold rounded-5 btn-m">
+                                    Eliminar
+                                </button>
+                                    <button @click="showPlanPopover = false" id="boton-plan-cancelar"
+                                        class="btn fw-bold rounded-5 btn-light btn-m">
+                                        Cancelar
+                                    </button>
                                 </p>
                             </div>
                         </div>
@@ -87,17 +92,42 @@
 import MainAboutUsAdmin from '@/components/MainAboutUsAdmin.vue';
 import UserNavbarAdmin from '@/components/UserNavbarAdmin.vue';
 import axios from 'axios';
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 
+const showPlanPopover = ref(false);
 const plans = ref([]);
+const selectedPlanId = ref(null);
+const popoverStyles = ref({});
 //consumo de api local .json y llamado de datos planes
-try {
-    const response = await axios.get('http://localhost:3000/plans');
-    plans.value = response.data;
-} catch (error) {
-    console.error('Error al obtener los datos de los planes', error);
-    alert('Ocurrió un error al obtener los datos de los planes');
-}
+onMounted(async () => {
+    try {
+        const response = await axios.get('http://localhost:3000/plans');
+        plans.value = response.data;
+    } catch (error) {
+        console.error('Error al obtener los datos de los planes', error);
+        alert('Ocurrió un error al obtener los datos de los planes');
+    }
+});
+const showDeletePlanConfirmation = (planId, event) => {
+    selectedPlanId.value = planId;
+    const rect = event.target.getBoundingClientRect();
+    popoverStyles.value = {
+        top: `${rect.top + window.scrollY}px`,
+        left: `${rect.right + window.scrollX + 10}px`
+    };
+    showPlanPopover.value = true;
+};
+
+const deletePlan = async () => {
+    try {
+        await axios.delete(`http://localhost:3000/plans/${selectedPlanId.value}`);
+        plans.value = plans.value.filter(plan => plan.id !== selectedPlanId.value);
+        showPlanPopover.value = false;
+    } catch (error) {
+        console.error('Error al eliminar el plan', error);
+        alert('Ocurrió un error al eliminar el plan');
+    }
+};
 
 </script>
 
@@ -106,6 +136,20 @@ try {
     background: linear-gradient(#00ff5e8c, #00ff0031);
     padding: 50px;
     margin: 10px;
+}
+
+#windows {
+    background-color: green;
+    border-radius: 15px;
+    position: absolute;
+    z-index: 1000;
+}
+
+#boton-plan-eliminar,
+#boton-plan-cancelar {
+    width: 150px;
+    height: 40px;
+    margin: 5px;
 }
 
 #cards {
