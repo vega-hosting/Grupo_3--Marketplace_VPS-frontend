@@ -24,7 +24,6 @@
                                 <div v-if="error" class="text-danger mt-3">{{ error }}</div>
                             </form>
                         </div>
-
                         <!--contenedor en columna para la imagen y el boton de inicio sesion-->
                         <div class="col-md-6 mb-3 mb-md-0">
                             <img src="../assets/loginVegaHosting.png" id="img" alt="Imagen" class="img-fluid mb-3">
