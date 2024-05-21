@@ -2,7 +2,8 @@
     <nav class="navbar navbar-expand-lg shadow-lg primary-bg-custom">
         <div class="container-fluid">
             <RouterLink to="/">
-                <img src="..\assets\Logo_de_navbar-removebg-preview.png" class="left-align img-fluid" style="width: 16rem; height: 5rem" />
+                <img src="../assets/Logo_de_navbar-removebg-preview.png" class="left-align img-fluid"
+                    style="width: 16rem; height: 5rem" />
             </RouterLink>
 
             <div class="right-align">
@@ -14,7 +15,7 @@
                 <div v-if="showPopover" class="shadow-lg popover">
                     <div class="text-white p-4 primary-bg-custom rounded-3">
                         <p class="text-center">
-                            <RouterLink to="/modify-account" class="btn  fw-bold rounded-5" id="btn-option">Modificar
+                            <RouterLink to="/modify-account" class="btn fw-bold rounded-5" id="btn-option">Modificar
                                 perfil</RouterLink>
                         </p>
                         <p class="text-center">
@@ -68,30 +69,31 @@
     border-radius: 10px;
 }
 
-#btn-option{
-  background-color: white;
-  width: 100%;
-  height: 100%;
+#btn-option {
+    background-color: white;
+    width: 100%;
+    height: 100%;
 }
-
 </style>
 
 <script setup>
 import axios from 'axios';
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 
-const userData = ref('');
+const userData = ref({});
 const showPopover = ref(false);
 
-try {
-
-    const response = await axios.get(`http://localhost:3000/user/1`); //Se tiene que pasar la id del usuario
-    userData.value = response.data;
-    console.log(userData.value);
-
-} catch (error) {
-    console.error('Error al obtener los datos', error);
-    alert('Ocurrio un error al obtener los datos del usuario');
-}
-
+onMounted(async () => {
+    const userId = localStorage.getItem('userId');
+    if (userId) {
+        try {
+            const response = await axios.get(`http://localhost:3000/user/${userId}`);
+            userData.value = response.data;
+            console.log(userData.value);
+        } catch (error) {
+            console.error('Error al obtener los datos', error);
+            alert('Ocurrió un error al obtener los datos del usuario');
+        }
+    }
+});
 </script>
