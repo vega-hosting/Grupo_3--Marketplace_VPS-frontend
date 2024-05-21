@@ -59,6 +59,18 @@
                                 </div>
                                 <p id="price">${{ plan.price }} CLP</p>
                             </div>
+                            <button @click="showDeletePlanConfirmation(plan.id)" class="btn btn-danger">Eliminar
+                                Plan</button>
+
+                        </div>
+                        <div v-if="showPlanPopover" class="shadow-lg popover">
+                            <div class="text-white p-2 primary-bg-custom rounded-3">
+                                <p class="text-center fw-semibold fs-6">¿Eliminar este plan?</p>
+                                <p class="text-center">
+                                    <button @click="deletePlan" class="btn btn-danger">Eliminar</button>
+                                    <button @click="cancelDeletePlan" class="btn btn-secondary">Cancelar</button>
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>

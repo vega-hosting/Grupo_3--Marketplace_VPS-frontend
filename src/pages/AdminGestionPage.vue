@@ -36,7 +36,7 @@
                             <p class="text-center fw-semibold fs-6">¿Eliminar usuario?</p>
                             <p class="text-center">
                                 <button @click="deleteUser" id="boton-usuario-popover"
-                                    class="btn fw-bold rounded-5 btn-light btn-m">
+                                    class="btn btn-danger fw-bold rounded-5 btn-m">
                                     Eliminar
                                 </button>
                                 <button @click="showPopover = false" id="boton-usuario-cancelar"
@@ -114,7 +114,6 @@ const deleteUser = async () => {
 
 #boton-usuario-popover,
 #boton-usuario-cancelar {
-    background-color: #ffffff;
     width: 150px;
     height: 40px;
     margin: 5px;
