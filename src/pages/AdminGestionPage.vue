@@ -22,7 +22,7 @@
                         <p>Gestión usuarios</p>
                     </div>
                     <div class="row">
-                        <div v-for="user in users" :key="user.id" class="col-sm-4">
+                        <div v-for="user in users" :key="user.id" class="col-sm-4 position-relative">
                             <div class="user-card">
                                 <img src="../assets/Avatar.png" class="user-image"
                                     @click="showDeleteConfirmation(user.id, $event)" />
@@ -33,12 +33,15 @@
                     <!-- Ventana eliminar usuario -->
                     <div v-if="showPopover" class="shadow-lg popover" id="windows" :style="popoverStyles">
                         <div class="text-white p-2 primary-bg-custom rounded-3">
-                            <br /><br />
                             <p class="text-center fw-semibold fs-6">¿Eliminar usuario?</p>
                             <p class="text-center">
-                                <button @click="deleteUser(selectedUserId)" id="boton-usuario-popover"
+                                <button @click="deleteUser" id="boton-usuario-popover"
                                     class="btn fw-bold rounded-5 btn-light btn-m">
                                     Eliminar
+                                </button>
+                                <button @click="showPopover = false" id="boton-usuario-cancelar"
+                                    class="btn fw-bold rounded-5 btn-light btn-m">
+                                    Cancelar
                                 </button>
                             </p>
                         </div>
@@ -77,16 +80,16 @@ const showDeleteConfirmation = (userId, event) => {
     selectedUserId.value = userId;
     const rect = event.target.getBoundingClientRect();
     popoverStyles.value = {
-        top: `${rect.top + window.scrollY + rect.height}px`,
-        left: `${rect.left + window.scrollX}px`
+        top: `${rect.top + window.scrollY}px`,
+        left: `${rect.right + window.scrollX + 10}px`
     };
     showPopover.value = true;
 };
 
-const deleteUser = async (userId) => {
+const deleteUser = async () => {
     try {
-        await axios.delete(`http://localhost:3000/user/${userId}`);
-        users.value = users.value.filter((user) => user.id !== userId);
+        await axios.delete(`http://localhost:3000/user/${selectedUserId.value}`);
+        users.value = users.value.filter(user => user.id !== selectedUserId.value);
         showPopover.value = false;
     } catch (error) {
         console.error('Error al eliminar el usuario', error);
@@ -109,10 +112,12 @@ const deleteUser = async (userId) => {
     z-index: 1000;
 }
 
-#boton-usuario-popover {
+#boton-usuario-popover,
+#boton-usuario-cancelar {
     background-color: #ffffff;
     width: 150px;
     height: 40px;
+    margin: 5px;
 }
 
 #title {

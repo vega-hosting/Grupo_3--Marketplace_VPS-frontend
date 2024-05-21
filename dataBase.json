@@ -69,6 +69,26 @@
       "city": "Temuco",
       "address": "742 Evergreen Terrace",
       "password": "adios"
+    },
+    {
+      "id": "5",
+      "name": "juan Casemiro",
+      "email": "Case@google.com",
+      "telephone": "+1 232 453 4443",
+      "nameCompany": "Company 3",
+      "city": "Temuco",
+      "address": "742 Terrace",
+      "password": "contraseña"
+    },
+    {
+      "id": "6",
+      "name": "Esteban Ruiz",
+      "email": "Esteban@google.com",
+      "telephone": "+1 233 234 4563",
+      "nameCompany": "Company fotr",
+      "city": "Santiago",
+      "address": "Terrace",
+      "password": "3465"
     }
   ],
   "subscription": [
