@@ -31,14 +31,14 @@
                         </div>
                         <!-- opción agregar un nuevo servidor -->
                         <div class="col text-right">
-                            <router-link to="/agregarProducto">
+                            <router-link to="/addPlan">
                                 <img src="../assets/agregar-simbolo.png" alt="Imagen agregar" id="add-product">
                             </router-link>
                         </div>
                     </div>
                     <!--mostrar cartas planes mediante el uso del consumo de archivo .json-->
                     <div class="row" id="cards">
-                        <div v-for="plan in plans" :key="plan.id" class="col-md-4">
+                        <div v-for="plan in plans" :key="plan.id" class="col-md-4 mb-3">
                             <div class="card" id="tittle-plan">
                                 <div class="card-body">
                                     <h5 class="card-title">{{ plan.name }} ({{ plan.stock }})</h5>
