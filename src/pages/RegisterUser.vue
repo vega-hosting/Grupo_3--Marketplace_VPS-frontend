@@ -160,9 +160,9 @@ label {
 
 <!--Parte Logica-->
 <script setup>
-import axios from 'axios';
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
+import { createUser } from '@/services/service.js';
 
 const router = useRouter();
 
@@ -176,30 +176,22 @@ const passwordUser = ref('');
 const passConfirm = ref('');
 
 async function registerUser() {
-    try {
-        if (passwordUser.value === passConfirm.value) {
-            const newUser = {
-                name: nameUser.value,
-                email: emailUser.value,
-                telephone: telUser.value,
-                name_company: nameCompany.value,
-                city: cityUser.value,
-                address: addressUser.value,
-                password: passwordUser.value
-            };
+    if (passwordUser.value === passConfirm.value) {
+        const newUser = {
+            name: nameUser.value,
+            email: emailUser.value,
+            telephone: telUser.value,
+            name_company: nameCompany.value,
+            city: cityUser.value,
+            address: addressUser.value,
+            password: passwordUser.value
+        };
 
-            const response = await axios.post(`http://localhost:3000/user`, newUser);
+        await createUser(newUser);
 
-            console.log(newUser);
-            console.log(response.data);
-
-            router.push({ path: '/' });
-        } else {
-            alert('Las contraseñas no coinciden. Por favor, verifique que las contraseñas sean iguales.');
-        }
-    } catch (error) {
-        console.error('Error al enviar los datos', error);
-        alert('Ocurrio un error al registrar al usuario');
+        router.push({ path: '/' });
+    } else {
+        alert('Las contraseñas no coinciden. Por favor, verifique que las contraseñas sean iguales.');
     }
 }
 </script>

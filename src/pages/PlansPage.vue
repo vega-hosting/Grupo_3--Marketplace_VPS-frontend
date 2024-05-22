@@ -68,22 +68,15 @@
 import UserNavbar from '@/components/UserNavbar.vue';
 import MainAboutUs from '@/components/MainAboutUs.vue';
 
-import axios from 'axios';
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
+import { getPlans } from "@/services/service.js"
 
 const router = useRouter();
 
 const plans = ref([]);
 
-try {
-    const response = await axios.get(`http://localhost:3000/plans`);
-    plans.value = response.data;
-    console.log(plans.value);
-} catch (error) {
-    console.error('Error al obtener los datos de los planes', error);
-    alert('Ocurrio un error al obtener los datos de los planes');
-}
+plans.value = await getPlans();
 
 function storageIdPlan( idPlan ){
     localStorage.setItem( 'plan' , idPlan );

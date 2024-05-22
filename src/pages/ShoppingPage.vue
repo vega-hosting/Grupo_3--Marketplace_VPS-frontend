@@ -166,9 +166,9 @@
 import UserNavbar from '@/components/UserNavbar.vue';
 import MainAboutUs from '@/components/MainAboutUs.vue';
 
-import axios from 'axios';
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
+import { getPlanById, createSubscription } from "@/services/service.js"
 
 const router = useRouter();
 
@@ -179,13 +179,7 @@ const user = localStorage.user;
 const billing = ref('1 Mes');
 const plan = ref('');
 
-try {
-    const response = await axios.get(`http://localhost:3000/plans/${idPlan}`);
-    plan.value = response.data;
-} catch (error) {
-    console.error('Error al obtener los datos de los planes', error);
-    alert('Ocurrio un error al obtener los datos de los planes');
-}
+plan.value = await getPlanById(idPlan);
 
 const priceVcoreAdd = () => {
     switch (infoServer.additionalVcore) {
@@ -265,26 +259,22 @@ const calculatePrice = (billing) => {
 }
 
 async function purchasePlan() {
-    try {
-        const infoPurchase = {
-            time: billing.value,
-            price: calculatePrice(billing.value),
-            hostname: infoServer.hostname,
-            os: infoServer.os,
-            passAdmin: infoServer.passAdmin,
-            additionalVcore: infoServer.additionalVcore,
-            additionalRam: infoServer.additionalRam,
-            additionalStorage: infoServer.additionalStorage,
-            id_plan: plan.value.id,
-            id_user: user
-        };
+    const infoPurchase = {
+        time: billing.value,
+        price: calculatePrice(billing.value),
+        hostname: infoServer.hostname,
+        os: infoServer.os,
+        passAdmin: infoServer.passAdmin,
+        additionalVcore: infoServer.additionalVcore,
+        additionalRam: infoServer.additionalRam,
+        additionalStorage: infoServer.additionalStorage,
+        id_plan: plan.value.id,
+        id_user: user
+    };
 
-        await axios.post(`http://localhost:3000/subscription`, infoPurchase);
+    await createSubscription(infoPurchase);
 
-        router.push('/shopping/success');
-    } catch (error) {
-        console.error('Error al registrar la compra', error);
-        alert('Ocurrio un error al registrar la compra');
-    }
+    router.push({ path: '/shopping/success' });
+
 }
 </script>

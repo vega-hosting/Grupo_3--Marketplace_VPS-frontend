@@ -106,9 +106,9 @@
 import UserNavbar from '@/components/UserNavbar.vue';
 import MainAboutUs from '@/components/MainAboutUs.vue';
 
-import axios from 'axios';
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
+import { getSubscriptionByIdUser, getPlans } from "@/services/service.js";
 
 const router = useRouter();
 
@@ -116,21 +116,13 @@ const plans = ref([]);
 
 const suscriptions = ref([]);
 
-try {
-    const response = await axios.get(`http://localhost:3000/subscription?id_user=${localStorage.user}`);
-    suscriptions.value = response.data;
+    suscriptions.value = await getSubscriptionByIdUser(sessionStorage.user);
 
-    const responseAux = await axios.get(`http://localhost:3000/plans`);
-    plans.value = responseAux.data;
-
-} catch (error) {
-    console.error('Error al obtener los datos', error);
-    alert('Ocurrio un error al obtener los datos');
-}
+    plans.value = await getPlans();
 
 function getDetailPlan(subscription) {
     const planId = subscription.id_plan;
-    return plans.value.find(plan => plan.id === planId);
+    return plans.value.find(plan => plan.id === planId); 
 }
 
 const vcoreAdd = (suscription) => {

@@ -14,13 +14,15 @@
                 <div v-if="showPopover" class="shadow-lg popover">
                     <div class="text-white p-4 primary-bg-custom rounded-3">
                         <p class="text-center">
-                            <RouterLink to="/modify-account" class="btn  fw-bold rounded-5" id="btn-option">Modificar perfil</RouterLink>
+                            <RouterLink to="/modify-account" class="btn  fw-bold rounded-5" id="btn-option">Modificar
+                                perfil</RouterLink>
                         </p>
                         <p class="text-center">
-                            <RouterLink to="/suscriptions" class="btn fw-bold rounded-5" id="btn-option">Ver Suscripciones</RouterLink>
+                            <RouterLink to="/suscriptions" class="btn fw-bold rounded-5" id="btn-option">Ver
+                                Suscripciones</RouterLink>
                         </p>
                         <p class="text-center">
-                            <RouterLink to="/" class="btn fw-bold rounded-5" id="btn-option">Cerrar Sesión</RouterLink>  
+                            <RouterLink to="/" class="btn fw-bold rounded-5" id="btn-option">Cerrar Sesión</RouterLink>
                         </p>
                     </div>
                 </div>
@@ -67,29 +69,20 @@
     border-radius: 10px;
 }
 
-#btn-option{
-  background-color: #0AD3FF;
-  width: 100%;
-  height: 100%;
+#btn-option {
+    background-color: #0AD3FF;
+    width: 100%;
+    height: 100%;
 }
 </style>
 
 <script setup>
-import axios from 'axios';
 import { ref } from 'vue';
+import { getUserById } from '@/services/service.js';
 
 const userData = ref('');
 const showPopover = ref(false);
 
-try {
-
-    const response = await axios.get(`http://localhost:3000/user/1`); //Se tiene que pasar la id del usuario
-    userData.value = response.data;
-    console.log(userData.value);
-
-} catch (error) {
-    console.error('Error al obtener los datos', error);
-    alert('Ocurrio un error al obtener los datos del usuario');
-}
+userData.value = await getUserById(sessionStorage.user);
 
 </script>
