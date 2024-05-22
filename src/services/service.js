@@ -13,6 +13,16 @@ export const createUser = async (newUser) => {
     }
 };
 
+export const getUsers = async () => {
+    try {
+        const response = await axios.get(`${API_URL}/user`);
+        return response.data;
+    } catch (error) {
+        console.error("Error al obtener los datos", error);
+        alert("Ocurrio un error al obtener los datos del usuario");
+    }
+};
+
 export const getUserById = async (idUser) => {
     try {
         const response = await axios.get(`${API_URL}/user/${idUser}`);
@@ -31,7 +41,25 @@ export const updateUser = async (idUser, newData) => {
         alert('Ocurrio un error al actualizar la información del usuario');
     }
 };
+
+export const deleteUserById = async (idUser) => {
+    try {
+        await axios.delete(`${API_URL}/user/${idUser}`);
+    } catch (error) {
+        console.error("Error al eliminar al usuario", error);
+        alert("Ocurrio un error al eliminar los datos del usuario");
+    }
+};
 // Plans
+
+export const createPlan = async (newPlan) => {
+    try {
+        await axios.post(`${API_URL}/plans`,newPlan);
+    } catch (error) {
+        console.error('Error al crear el plan', error);
+        alert('Ocurrio un error al registrar el plan');
+    }
+}
 
 export const getPlans = async () => {
     try {
@@ -50,6 +78,24 @@ export const getPlanById = async (idPlan) => {
     } catch (error) {
         console.error('Error al obtener los datos del plan', error);
         alert('Ocurrio un error al obtener los datos del plan');
+    }
+}
+
+export const updatePlan = async (idPlan, newData) => {
+    try {
+        await axios.put(`${API_URL}/plans/${idPlan}`, newData);
+    } catch (error) {
+        console.error('Error al cambiar los datos', error);
+        alert('Ocurrio un error al actualizar la información del plan');
+    }
+}
+
+export const deletePlanById = async (idPlan) => {
+    try {
+        await axios.delete(`${API_URL}/plans/${idPlan}`);
+    } catch (error) {
+        console.error('Error al eliminar el plan', error);
+        alert('Ocurrio un error al eliminar el plan de la base de datos');
     }
 }
 

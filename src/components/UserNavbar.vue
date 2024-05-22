@@ -84,6 +84,6 @@ import { getUserById } from '@/services/service.js';
 const userData = ref('');
 const showPopover = ref(false);
 
-userData.value = await getUserById(sessionStorage.user);
+userData.value = await getUserById(sessionStorage.userId);
 
 </script>

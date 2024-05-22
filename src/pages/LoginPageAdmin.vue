@@ -41,7 +41,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import { getUsers } from "@/services/service.js";
 
 export default {
     data() {
@@ -54,8 +54,8 @@ export default {
     methods: {
         async loginAdmin() {
             try {
-                const response = await axios.get('http://localhost:3000/user');
-                const users = response.data;
+                
+                const users = await getUsers();
                 const user = users.find(user => user.name === this.username && user.password === this.password);
                 if (user) {
                     sessionStorage.setItem('userId', user.id);

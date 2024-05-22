@@ -65,7 +65,7 @@
 </template>
 
 <script setup>
-import axios from 'axios';
+import { getPlans, createPlan, updatePlan } from "@/services/service.js"
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 
@@ -91,8 +91,7 @@ async function addPlan() {
             quantity: quantity.value
         };
 
-        const response = await axios.get(`http://localhost:3000/plans`);
-        const existingPlans = response.data;
+        const existingPlans = await getPlans();
 
         let existingPlan = existingPlans.find(plan =>
             plan.name === newPlan.name &&
@@ -105,9 +104,9 @@ async function addPlan() {
 
         if (existingPlan) {
             existingPlan.quantity += newPlan.quantity;
-            await axios.put(`http://localhost:3000/plans/${existingPlan.id}`, existingPlan);
+            await updatePlan(existingPlan.id, existingPlan);
         } else {
-            await axios.post(`http://localhost:3000/plans`, newPlan);
+            await createPlan(newPlan);
         }
 
         router.push({ path: '/adminStock' });
