@@ -79,7 +79,7 @@ const plans = ref([]);
 plans.value = await getPlans();
 
 function storageIdPlan( idPlan ){
-    localStorage.setItem( 'plan' , idPlan );
+    sessionStorage.setItem( 'plan' , idPlan );
     router.push({ path: '/config-vps' });
 }
 

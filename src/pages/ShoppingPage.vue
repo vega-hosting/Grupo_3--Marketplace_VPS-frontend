@@ -172,9 +172,9 @@ import { getPlanById, createSubscription } from "@/services/service.js"
 
 const router = useRouter();
 
-const idPlan = localStorage.plan;
-const infoServer = JSON.parse(localStorage.getItem('configVps'));
-const user = localStorage.user;
+const idPlan = sessionStorage.plan;
+const infoServer = JSON.parse(sessionStorage.getItem('configVps'));
+const user = sessionStorage.user;
 
 const billing = ref('1 Mes');
 const plan = ref('');

@@ -162,8 +162,6 @@ const additionalVcore = ref('Ninguno');
 const additionalRam = ref('Ninguno');
 const additionalStorage = ref('Ninguno');
 
-console.log(localStorage.plan);
-
 function saveConfig() {
 
     const config = {
@@ -175,7 +173,7 @@ function saveConfig() {
         additionalStorage: additionalStorage.value
     };
 
-    localStorage.setItem('configVps', JSON.stringify(config));
+    sessionStorage.setItem('configVps', JSON.stringify(config));
 
     router.push({ path: '/shopping' });
 }
