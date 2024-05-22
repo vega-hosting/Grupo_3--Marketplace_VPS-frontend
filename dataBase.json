@@ -7,7 +7,8 @@
       "ram": 2,
       "storage": 30,
       "bus": 500,
-      "price": 3990
+      "price": 3990,
+      "quantity": 11
     },
     {
       "id": "2",
@@ -16,7 +17,8 @@
       "ram": 4,
       "storage": 60,
       "bus": 500,
-      "price": 6990
+      "price": 6990,
+      "quantity": 45
     },
     {
       "id": "3",
@@ -25,15 +27,17 @@
       "ram": 8,
       "storage": 120,
       "bus": 500,
-      "price": 9990
+      "price": 9990,
+      "quantity": 24
     }
   ],
   "user": [
     {
       "name": "Usuario 1",
-      "email": "user1@gmail.com",
       "telephone": "+1 222 333 4444",
       "name_company": "Company Tester",
+      "email": "Gabriela@google.com",
+      "nameCompany": "Company Tester",
       "city": "Springfield",
       "address": "742 Evergreen Terrace",
       "password": "987654321",
@@ -41,13 +45,53 @@
     },
     {
       "id": "afe5",
-      "name": "Tester",
+      "name": "Tester Cruz",
       "email": "Tester@google.com",
       "telephone": "+2 335 466 8452",
-      "name_company": "Compañia Tester",
+      "nameCompany": "Compañia Tester",
       "city": "City",
       "address": "Address",
       "password": "12345"
+    },
+    {
+      "id": "3",
+      "name": "Nicolas Lopez",
+      "email": "Lopez@google.com",
+      "telephone": "+1 222 333 4444",
+      "nameCompany": "Company 1",
+      "city": "Springfield",
+      "address": "742 Evergreen Terrace",
+      "password": "Hola"
+    },
+    {
+      "id": "4",
+      "name": "juan Perez",
+      "email": "Perez@google.com",
+      "telephone": "+1 222 333 4443",
+      "nameCompany": "Company 2",
+      "city": "Temuco",
+      "address": "742 Evergreen Terrace",
+      "password": "adios"
+    },
+    {
+      "id": "5",
+      "name": "juan Casemiro",
+      "email": "Case@google.com",
+      "telephone": "+1 232 453 4443",
+      "nameCompany": "Company 3",
+      "city": "Temuco",
+      "address": "742 Terrace",
+      "password": "contraseña"
+    },
+    {
+      "id": "6",
+      "name": "Esteban Ruiz",
+      "email": "Esteban@google.com",
+      "telephone": "+1 233 234 4563",
+      "nameCompany": "Company fotr",
+      "city": "Santiago",
+      "address": "Terrace",
+      "password": "3465"
     }
   ],
   "subscription": [

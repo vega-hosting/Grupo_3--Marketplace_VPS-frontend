@@ -2,7 +2,8 @@
     <nav class="navbar navbar-expand-lg shadow-lg primary-bg-custom">
         <div class="container-fluid">
             <RouterLink to="/">
-                <img src="..\assets\Logo de navbar.png" class="left-align img-fluid img-logo" />
+                <img src="../assets/Logo_de_navbar-removebg-preview.png" class="left-align img-fluid"
+                    style="width: 16rem; height: 5rem" />
             </RouterLink>
 
             <div class="right-align">
@@ -14,7 +15,7 @@
                 <div v-if="showPopover" class="shadow-lg popover">
                     <div class="text-white p-4 primary-bg-custom rounded-3">
                         <p class="text-center">
-                            <RouterLink to="/modify-account" class="btn  fw-bold rounded-5" id="btn-option">Modificar
+                            <RouterLink to="/modify-account" class="btn fw-bold rounded-5" id="btn-option">Modificar
                                 perfil</RouterLink>
                         </p>
                         <p class="text-center">
@@ -29,16 +30,15 @@
             </div>
         </div>
     </nav>
-
 </template>
 
 <style scoped>
 .primary-bg-custom {
-    background-color: #07155e;
+    background-color: green;
 }
 
 .secondary-text {
-    color: #07155e;
+    color: green;
 }
 
 .img-logo {
@@ -70,7 +70,7 @@
 }
 
 #btn-option {
-    background-color: #0AD3FF;
+    background-color: white;
     width: 100%;
     height: 100%;
 }
@@ -80,7 +80,7 @@
 import axios from 'axios';
 import { ref, onMounted } from 'vue';
 
-const userData = ref('');
+const userData = ref({});
 const showPopover = ref(false);
 
 onMounted(async () => {
@@ -92,9 +92,8 @@ onMounted(async () => {
             console.log(userData.value);
         } catch (error) {
             console.error('Error al obtener los datos', error);
-            alert('Ocurrio un error al obtener los datos del usuario');
+            alert('Ocurrió un error al obtener los datos del usuario');
         }
     }
 });
-
 </script>

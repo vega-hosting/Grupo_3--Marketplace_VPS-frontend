@@ -12,6 +12,7 @@ import ShoppingPage from "@/pages/ShoppingPage.vue";
 import SucessfulPurchase from "@/pages/SucessfulPurchase.vue";
 import ModifyUser from "@/pages/ModifyUser.vue";
 import SuscriptionUser from "@/pages/SuscriptionUser.vue";
+import AddNewPlan from "@/pages/AddNewPlan.vue"
 
 const routes = [
   { path: "/", component: HomePage },
@@ -27,6 +28,8 @@ const routes = [
   { path: "/shopping/success", component: SucessfulPurchase },
   { path: "/modify-account", component: ModifyUser },
   { path: "/suscriptions", component: SuscriptionUser },
+  { path: "/addPlan", component: AddNewPlan },
+
 ];
 
 export const router = createRouter({

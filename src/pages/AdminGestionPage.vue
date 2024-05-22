@@ -1,67 +1,49 @@
 <template>
     <div>
-        <MainNavbarAdmin />
-        <div class="container-fluid ">
+        <UserNavbarAdmin />
+        <div class="container-fluid">
             <div class="row text-center">
-            <!--contenedor opciones-->
+                <!-- Contenedor de opciones -->
                 <div class="col-md-3 rounded-4" id="container">
-                    <img src="../assets/settings.png" id="img-setting" class="img-fluid">
-
-                    <router-link to="/adminStock" class="btn fw-bold btn-light rounded-4 btn-option">Ver Stock</router-link>
-                    <br>
-                    <br>
-                    <router-link to="/opcion2" class="btn fw-bold btn-light rounded-4 btn-option">Opcion 2</router-link>
-                    <br>
-                    <br>
-                    <router-link to="/opcion3" class="btn fw-bold btn-light rounded-4 btn-option">Opcion 3</router-link>
-                    <br>
-                    <br>
-                    <router-link to="/adminGestion" class="btn fw-bold btn-light rounded-4 btn-option">Gestion
+                    <img src="../assets/settings.png" id="img-setting" class="img-fluid" />
+                    <router-link to="/adminStock" class="btn fw-bold btn-light rounded-4 btn-option">Ver
+                        Stock</router-link>
+                    <br /><br />
+                    <router-link to="/opcion2" class="btn fw-bold btn-light rounded-4 btn-option">Opción 2</router-link>
+                    <br /><br />
+                    <router-link to="/opcion3" class="btn fw-bold btn-light rounded-4 btn-option">Opción 3</router-link>
+                    <br /><br />
+                    <router-link to="/adminGestion" class="btn fw-bold btn-light rounded-4 btn-option">Gestión
                         Usuario</router-link>
                 </div>
-                <!--contenedor gestion-->
+                <!-- Contenedor de gestión -->
                 <div class="col rounded-4 fw-bold" id="container">
-                    <div id="tittle">
-                        <p>Gestion usuarios</p>
-                    </div>
-                    <div class="row ">
-                        <div class="col-sm-4">
-                            <div class="user-card">
-                                <img src="../assets/Avatar.png" class="user-image" @click="showDeleteConfirmation(1)">
-                                <p>Usuario 1</p>
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="user-card">
-                                <img src="../assets/Avatar.png" class="user-image" @click="showDeleteConfirmation(2)">
-                                <p>Usuario 2</p>
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="user-card">
-                                <img src="../assets/Avatar.png" class="user-image" @click="showDeleteConfirmation(3)">
-                                <p>Usuario 3</p>
-                            </div>
-                        </div>
+                    <div id="title">
+                        <p>Gestión usuarios</p>
                     </div>
                     <div class="row">
-                        <div class="col-sm-4">
+                        <div v-for="user in users" :key="user.id" class="col-sm-4 position-relative">
                             <div class="user-card">
-                                <img src="../assets/Avatar.png" class="user-image" @click="showDeleteConfirmation(4)">
-                                <p>Usuario 4</p>
+                                <img src="../assets/Avatar.png" class="user-image"
+                                    @click="showDeleteConfirmation(user.id, $event)" />
+                                <p>{{ user.name }}</p>
                             </div>
                         </div>
-                        <div class="col-sm-4">
-                            <div class="user-card">
-                                <img src="../assets/Avatar.png" class="user-image" @click="showDeleteConfirmation(5)">
-                                <p>Usuario 5</p>
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="user-card">
-                                <img src="../assets/Avatar.png" class="user-image" @click="showDeleteConfirmation(6)">
-                                <p>Usuario 6</p>
-                            </div>
+                    </div>
+                    <!-- Ventana eliminar usuario -->
+                    <div v-if="showPopover" class="shadow-lg popover" id="windows" :style="popoverStyles">
+                        <div class="text-white p-2 primary-bg-custom rounded-3">
+                            <p class="text-center fw-semibold fs-6">¿Eliminar usuario?</p>
+                            <p class="text-center">
+                                <button @click="deleteUser" id="boton-usuario-popover"
+                                    class="btn btn-danger fw-bold rounded-5 btn-m">
+                                    Eliminar
+                                </button>
+                                <button @click="showPopover = false" id="boton-usuario-cancelar"
+                                    class="btn fw-bold rounded-5 btn-light btn-m">
+                                    Cancelar
+                                </button>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -75,13 +57,45 @@
 
 <script setup>
 import MainAboutUsAdmin from '@/components/MainAboutUsAdmin.vue';
-import MainNavbarAdmin from '@/components/MainNavbarAdmin.vue';
+import UserNavbarAdmin from '@/components/UserNavbarAdmin.vue';
+import axios from 'axios';
+import { ref, onMounted } from 'vue';
 
-/*const showDeleteConfirmation = (userId) => {
-    //funcion que elimine un usuario??
-    console.log("Delete user con ID:", userId);
-}*/
+const showPopover = ref(false);
+const users = ref([]);
+const selectedUserId = ref(null);
+const popoverStyles = ref({});
 
+onMounted(async () => {
+    try {
+        const response = await axios.get('http://localhost:3000/user');
+        users.value = response.data;
+    } catch (error) {
+        console.error('Error al obtener los datos de los usuarios', error);
+        alert('Ocurrió un error al obtener los datos de los usuarios');
+    }
+});
+
+const showDeleteConfirmation = (userId, event) => {
+    selectedUserId.value = userId;
+    const rect = event.target.getBoundingClientRect();
+    popoverStyles.value = {
+        top: `${rect.top + window.scrollY}px`,
+        left: `${rect.right + window.scrollX + 10}px`
+    };
+    showPopover.value = true;
+};
+
+const deleteUser = async () => {
+    try {
+        await axios.delete(`http://localhost:3000/user/${selectedUserId.value}`);
+        users.value = users.value.filter(user => user.id !== selectedUserId.value);
+        showPopover.value = false;
+    } catch (error) {
+        console.error('Error al eliminar el usuario', error);
+        alert('Ocurrió un error al eliminar el usuario');
+    }
+};
 </script>
 
 <style scoped>
@@ -89,10 +103,23 @@ import MainNavbarAdmin from '@/components/MainNavbarAdmin.vue';
     background: linear-gradient(#00ff5e8c, #00ff0031);
     padding: 50px;
     margin: 10px;
-
 }
 
-#tittle {
+#windows {
+    background-color: green;
+    border-radius: 15px;
+    position: absolute;
+    z-index: 1000;
+}
+
+#boton-usuario-popover,
+#boton-usuario-cancelar {
+    width: 150px;
+    height: 40px;
+    margin: 5px;
+}
+
+#title {
     background-color: #f0f0f0;
     border-radius: 25px;
     max-width: 20%;
