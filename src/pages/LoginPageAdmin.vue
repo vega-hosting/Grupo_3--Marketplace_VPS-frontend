@@ -56,7 +56,7 @@ export default {
             try {
                 const response = await axios.get('http://localhost:3000/user');
                 const users = response.data;
-                const user = users.find(user => user.email === this.username && user.password === this.password);
+                const user = users.find(user => user.name === this.username && user.password === this.password);
                 if (user) {
                     localStorage.setItem('userId', user.id);
                     this.$router.push('/adminGestion');
