@@ -168,7 +168,7 @@ import MainAboutUs from '@/components/MainAboutUs.vue';
 
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
-import { getPlanById, createSubscription } from "@/services/service.js"
+import { getPlanById, createSubscription, updatePlan } from "@/services/service.js"
 
 const router = useRouter();
 
@@ -271,6 +271,10 @@ async function purchasePlan() {
         id_plan: plan.value.id,
         id_user: user
     };
+
+    plan.value.quantity--;
+
+    await updatePlan(idPlan, plan.value);
 
     await createSubscription(infoPurchase);
 

@@ -28,7 +28,7 @@
       "storage": 120,
       "bus": 500,
       "price": 9990,
-      "quantity": 24
+      "quantity": 23
     }
   ],
   "user": [
@@ -144,6 +144,19 @@
       "additionalRam": "Ninguno",
       "additionalStorage": "50 GB $4.000 CLP",
       "id_plan": "2",
+      "id_user": "1"
+    },
+    {
+      "id": "c3be",
+      "time": "3 Meses",
+      "price": 27572,
+      "hostname": "Hola",
+      "os": "CentOs",
+      "passAdmin": "098765",
+      "additionalVcore": "Ninguno",
+      "additionalRam": "Ninguno",
+      "additionalStorage": "Ninguno",
+      "id_plan": "3",
       "id_user": "1"
     }
   ]
