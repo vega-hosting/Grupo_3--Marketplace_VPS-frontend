@@ -86,7 +86,7 @@ try {
 }
 
 function storageIdPlan( idPlan ){
-    localStorage.setItem( 'plan' , idPlan );
+    sessionStorage.setItem( 'plan' , idPlan );
     router.push({ path: '/config-vps' });
 }
 

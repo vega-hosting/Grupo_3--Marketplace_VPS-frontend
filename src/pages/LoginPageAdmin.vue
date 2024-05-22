@@ -58,7 +58,7 @@ export default {
                 const users = response.data;
                 const user = users.find(user => user.name === this.username && user.password === this.password);
                 if (user) {
-                    localStorage.setItem('userId', user.id);
+                    sessionStorage.setItem('userId', user.id);
                     this.$router.push('/adminGestion');
                 } else {
                     this.error = 'Nombre de usuario o contraseña incorrectos';

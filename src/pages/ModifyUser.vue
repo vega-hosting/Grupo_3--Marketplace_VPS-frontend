@@ -166,7 +166,7 @@ const cityUser = ref('');
 const addressUser = ref('');
 
 try {
-    const response = await axios.get(`http://localhost:3000/user/${localStorage.user}`);
+    const response = await axios.get(`http://localhost:3000/user/${sessionStorage.user}`);
     user.value = response.data;
     nameUser.value = user.value.name;
     emailUser.value = user.value.email;

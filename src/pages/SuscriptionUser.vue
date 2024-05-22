@@ -117,7 +117,7 @@ const plans = ref([]);
 const suscriptions = ref([]);
 
 try {
-    const response = await axios.get(`http://localhost:3000/subscription?id_user=${localStorage.user}`);
+    const response = await axios.get(`http://localhost:3000/subscription?id_user=${sessionStorage.user}`);
     suscriptions.value = response.data;
 
     const responseAux = await axios.get(`http://localhost:3000/plans`);

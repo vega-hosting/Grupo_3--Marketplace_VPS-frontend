@@ -84,7 +84,7 @@ const userData = ref({});
 const showPopover = ref(false);
 
 onMounted(async () => {
-    const userId = localStorage.getItem('userId');
+    const userId = sessionStorage.getItem('userId');
     if (userId) {
         try {
             const response = await axios.get(`http://localhost:3000/user/${userId}`);
