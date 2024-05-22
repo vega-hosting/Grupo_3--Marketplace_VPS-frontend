@@ -19,7 +19,8 @@
                             </div>
                             <br />
                             <div class="text-center">
-                                <button @click="storageIdPlan(plan.id)" class="btn btn-light" id="boton-plan">$ {{ plan.price }} CLP</button>
+                                <button @click="storageIdPlan(plan.id)" class="btn btn-light" id="boton-plan">$ {{
+                                    plan.price }} CLP</button>
                             </div>
                         </div>
                     </div>
@@ -78,8 +79,8 @@ const plans = ref([]);
 
 plans.value = await getPlans();
 
-function storageIdPlan( idPlan ){
-    sessionStorage.setItem( 'plan' , idPlan );
+function storageIdPlan(idPlan) {
+    sessionStorage.setItem('plan', idPlan);
     router.push({ path: '/config-vps' });
 }
 

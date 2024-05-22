@@ -58,8 +58,8 @@
 <script setup>
 import MainAboutUsAdmin from '@/components/MainAboutUsAdmin.vue';
 import UserNavbarAdmin from '@/components/UserNavbarAdmin.vue';
-import axios from 'axios';
 import { ref, onMounted } from 'vue';
+import { getUsers, deleteUserById } from "@/services/service.js";
 
 const showPopover = ref(false);
 const users = ref([]);
@@ -68,8 +68,7 @@ const popoverStyles = ref({});
 
 onMounted(async () => {
     try {
-        const response = await axios.get('http://localhost:3000/user');
-        users.value = response.data;
+        users.value = await getUsers();
     } catch (error) {
         console.error('Error al obtener los datos de los usuarios', error);
         alert('Ocurrió un error al obtener los datos de los usuarios');
@@ -88,7 +87,7 @@ const showDeleteConfirmation = (userId, event) => {
 
 const deleteUser = async () => {
     try {
-        await axios.delete(`http://localhost:3000/user/${selectedUserId.value}`);
+        await deleteUserById(selectedUserId.value);
         users.value = users.value.filter(user => user.id !== selectedUserId.value);
         showPopover.value = false;
     } catch (error) {

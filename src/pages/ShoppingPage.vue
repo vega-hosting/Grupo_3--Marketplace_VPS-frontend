@@ -174,7 +174,7 @@ const router = useRouter();
 
 const idPlan = sessionStorage.plan;
 const infoServer = JSON.parse(sessionStorage.getItem('configVps'));
-const user = sessionStorage.user;
+const user = sessionStorage.userId;
 
 const billing = ref('1 Mes');
 const plan = ref('');

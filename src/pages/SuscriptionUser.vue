@@ -116,13 +116,13 @@ const plans = ref([]);
 
 const suscriptions = ref([]);
 
-    suscriptions.value = await getSubscriptionByIdUser(sessionStorage.user);
+suscriptions.value = await getSubscriptionByIdUser(sessionStorage.userId);
 
-    plans.value = await getPlans();
+plans.value = await getPlans();
 
 function getDetailPlan(subscription) {
     const planId = subscription.id_plan;
-    return plans.value.find(plan => plan.id === planId); 
+    return plans.value.find(plan => plan.id === planId);
 }
 
 const vcoreAdd = (suscription) => {
