@@ -67,9 +67,9 @@
                                 <p class="text-center fw-semibold fs-6">¿Eliminar plan?</p>
                                 <p class="text-center">
                                     <button @click="deletePlan" id="boton-plan-eliminar"
-                                    class="btn btn-danger fw-bold rounded-5 btn-m">
-                                    Eliminar
-                                </button>
+                                        class="btn btn-danger fw-bold rounded-5 btn-m">
+                                        Eliminar
+                                    </button>
                                     <button @click="showPlanPopover = false" id="boton-plan-cancelar"
                                         class="btn fw-bold rounded-5 btn-light btn-m">
                                         Cancelar
@@ -91,7 +91,7 @@
 <script setup>
 import MainAboutUsAdmin from '@/components/MainAboutUsAdmin.vue';
 import UserNavbarAdmin from '@/components/UserNavbarAdmin.vue';
-import axios from 'axios';
+import { getPlans, deletePlanById } from "@/services/service.js";
 import { ref, onMounted } from 'vue';
 
 const showPlanPopover = ref(false);
@@ -101,8 +101,7 @@ const popoverStyles = ref({});
 //consumo de api local .json y llamado de datos planes
 onMounted(async () => {
     try {
-        const response = await axios.get('http://localhost:3000/plans');
-        plans.value = response.data;
+        plans.value = await getPlans();
     } catch (error) {
         console.error('Error al obtener los datos de los planes', error);
         alert('Ocurrió un error al obtener los datos de los planes');
@@ -120,7 +119,7 @@ const showDeletePlanConfirmation = (planId, event) => {
 
 const deletePlan = async () => {
     try {
-        await axios.delete(`http://localhost:3000/plans/${selectedPlanId.value}`);
+        await deletePlanById(selectedPlanId.value);
         plans.value = plans.value.filter(plan => plan.id !== selectedPlanId.value);
         showPlanPopover.value = false;
     } catch (error) {

@@ -167,8 +167,8 @@ const cityUser = ref('');
 const addressUser = ref('');
 
 try {
-    
-    user.value = await getUserById(sessionStorage.user);
+
+    user.value = await getUserById(sessionStorage.userId);
 
     nameUser.value = user.value.name;
     emailUser.value = user.value.email;
@@ -193,7 +193,7 @@ async function changeDataUser() {
         password: user.value.password
     };
 
-    await updateUser(sessionStorage.user, dataUser);
+    await updateUser(sessionStorage.userId, dataUser);
 
     window.location.reload();
 

@@ -8,7 +8,7 @@
       "storage": 30,
       "bus": 500,
       "price": 3990,
-      "quantity": 11
+      "quantity": 21
     },
     {
       "id": "2",
@@ -34,10 +34,9 @@
   "user": [
     {
       "name": "Usuario 1",
+      "email": "User1@google.com",
       "telephone": "+1 222 333 4444",
       "name_company": "Company Tester",
-      "email": "Gabriela@google.com",
-      "nameCompany": "Company Tester",
       "city": "Springfield",
       "address": "742 Evergreen Terrace",
       "password": "987654321",
@@ -118,6 +117,32 @@
       "additionalVcore": "Ninguno",
       "additionalRam": "2 GB $2.000 CLP",
       "additionalStorage": "Ninguno",
+      "id_plan": "2",
+      "id_user": "1"
+    },
+    {
+      "id": "0cd4",
+      "time": "3 Meses",
+      "price": 30332,
+      "hostname": "Servidor de prueba",
+      "os": "Debian",
+      "passAdmin": "12345",
+      "additionalVcore": "Ninguno",
+      "additionalRam": "Ninguno",
+      "additionalStorage": "50 GB $4.000 CLP",
+      "id_plan": "2",
+      "id_user": "1"
+    },
+    {
+      "id": "ad37",
+      "time": "1 Mes",
+      "price": 10990,
+      "hostname": "Servidor de prueba",
+      "os": "Debian",
+      "passAdmin": "12345",
+      "additionalVcore": "Ninguno",
+      "additionalRam": "Ninguno",
+      "additionalStorage": "50 GB $4.000 CLP",
       "id_plan": "2",
       "id_user": "1"
     }
