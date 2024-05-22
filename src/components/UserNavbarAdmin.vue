@@ -15,14 +15,6 @@
                 <div v-if="showPopover" class="shadow-lg popover">
                     <div class="text-white p-4 primary-bg-custom rounded-3">
                         <p class="text-center">
-                            <RouterLink to="/modify-account" class="btn fw-bold rounded-5" id="btn-option">Modificar
-                                perfil</RouterLink>
-                        </p>
-                        <p class="text-center">
-                            <RouterLink to="/suscriptions" class="btn fw-bold rounded-5" id="btn-option">Ver
-                                Suscripciones</RouterLink>
-                        </p>
-                        <p class="text-center">
                             <RouterLink to="/" class="btn fw-bold rounded-5" id="btn-option">Cerrar Sesión</RouterLink>
                         </p>
                     </div>
