@@ -77,24 +77,13 @@
 </style>
 
 <script setup>
-import axios from 'axios';
-import { ref, onMounted } from 'vue';
+import { ref } from 'vue';
+import { getUserById } from '@/services/service.js';
+
 
 const userData = ref('');
 const showPopover = ref(false);
 
-onMounted(async () => {
-    const userId = sessionStorage.getItem('userId');
-    if (userId) {
-        try {
-            const response = await axios.get(`http://localhost:3000/user/${userId}`);
-            userData.value = response.data;
-            console.log(userData.value);
-        } catch (error) {
-            console.error('Error al obtener los datos', error);
-            alert('Ocurrio un error al obtener los datos del usuario');
-        }
-    }
-});
+userData.value = await getUserById(sessionStorage.user);
 
 </script>

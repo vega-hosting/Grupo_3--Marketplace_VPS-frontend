@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-10 d-flex justify-content-center align-items-center bg-custom">
                     <div class="col-md-10 p-3">
-                        <form @submit.prevent="updateUser">
+                        <form @submit.prevent="changeDataUser">
                             <div class="row p-custom">
                                 <div class="col-md-6">
                                     <!--Nombre completo del usuario-->
@@ -60,7 +60,7 @@
                             <div class="col">
                                 <button type="submit" class="btn btn-light m-4" id="update-button">Guardar</button>
                                 <button @click="returnPrevPag" class="btn btn-light mt-4 mb-4"
-                                id="back-button">Volver</button>
+                                    id="back-button">Volver</button>
                             </div>
                         </form>
                     </div>
@@ -151,9 +151,10 @@ label {
 import UserNavbar from '@/components/UserNavbar.vue';
 import MainAboutUs from '@/components/MainAboutUs.vue';
 
-import axios from 'axios';
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
+import { updateUser, getUserById } from '@/services/service.js'
+
 const router = useRouter();
 
 const user = ref('');
@@ -166,8 +167,9 @@ const cityUser = ref('');
 const addressUser = ref('');
 
 try {
-    const response = await axios.get(`http://localhost:3000/user/${sessionStorage.user}`);
-    user.value = response.data;
+    
+    user.value = await getUserById(sessionStorage.user);
+
     nameUser.value = user.value.name;
     emailUser.value = user.value.email;
     telUser.value = user.value.telephone;
@@ -179,24 +181,22 @@ try {
     alert('Ocurrio un error al obtener los datos del usuario');
 }
 
-async function updateUser() {
-    try {
-        const newUser = {
-            name: nameUser.value,
-            email: emailUser.value,
-            telephone: telUser.value,
-            name_company: nameCompany.value,
-            city: cityUser.value,
-            address: addressUser.value,
-            password: user.value.password
-        };
+async function changeDataUser() {
 
-        await axios.put(`http://localhost:3000/user/${user.value.id}`,newUser);
-        window.location.reload();
-    } catch (error) {
-        console.error('Error al enviar los datos', error);
-        alert('Ocurrio un error al actualizar la información del usuario');
-    }
+    const dataUser = {
+        name: nameUser.value,
+        email: emailUser.value,
+        telephone: telUser.value,
+        name_company: nameCompany.value,
+        city: cityUser.value,
+        address: addressUser.value,
+        password: user.value.password
+    };
+
+    await updateUser(sessionStorage.user, dataUser);
+
+    window.location.reload();
+
 }
 
 function returnPrevPag() {
