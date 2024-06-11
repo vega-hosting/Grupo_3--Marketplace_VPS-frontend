@@ -1,0 +1,163 @@
+{
+  "plans": [
+    {
+      "id": "1",
+      "name": "VPS-1",
+      "vcore": 1,
+      "ram": 2,
+      "storage": 30,
+      "bus": 500,
+      "price": 3990,
+      "quantity": 21
+    },
+    {
+      "id": "2",
+      "name": "VPS-2",
+      "vcore": 2,
+      "ram": 4,
+      "storage": 60,
+      "bus": 500,
+      "price": 6990,
+      "quantity": 45
+    },
+    {
+      "id": "3",
+      "name": "VPS-3",
+      "vcore": 4,
+      "ram": 8,
+      "storage": 120,
+      "bus": 500,
+      "price": 9990,
+      "quantity": 23
+    }
+  ],
+  "user": [
+    {
+      "name": "Usuario 1",
+      "email": "User1@google.com",
+      "telephone": "+1 222 333 4444",
+      "name_company": "Company Tester",
+      "city": "Springfield",
+      "address": "742 Evergreen Terrace",
+      "password": "987654321",
+      "id": "1"
+    },
+    {
+      "id": "afe5",
+      "name": "Tester Cruz",
+      "email": "Tester@google.com",
+      "telephone": "+2 335 466 8452",
+      "nameCompany": "Compañia Tester",
+      "city": "City",
+      "address": "Address",
+      "password": "12345"
+    },
+    {
+      "id": "3",
+      "name": "Nicolas Lopez",
+      "email": "Lopez@google.com",
+      "telephone": "+1 222 333 4444",
+      "nameCompany": "Company 1",
+      "city": "Springfield",
+      "address": "742 Evergreen Terrace",
+      "password": "Hola"
+    },
+    {
+      "id": "4",
+      "name": "juan Perez",
+      "email": "Perez@google.com",
+      "telephone": "+1 222 333 4443",
+      "nameCompany": "Company 2",
+      "city": "Temuco",
+      "address": "742 Evergreen Terrace",
+      "password": "adios"
+    },
+    {
+      "id": "5",
+      "name": "juan Casemiro",
+      "email": "Case@google.com",
+      "telephone": "+1 232 453 4443",
+      "nameCompany": "Company 3",
+      "city": "Temuco",
+      "address": "742 Terrace",
+      "password": "contraseña"
+    },
+    {
+      "id": "6",
+      "name": "Esteban Ruiz",
+      "email": "Esteban@google.com",
+      "telephone": "+1 233 234 4563",
+      "nameCompany": "Company fotr",
+      "city": "Santiago",
+      "address": "Terrace",
+      "password": "3465"
+    }
+  ],
+  "subscription": [
+    {
+      "id": "1",
+      "time": "6 Meses",
+      "price": 56049,
+      "hostname": "HostTester",
+      "os": "Debian",
+      "passAdmin": "1234567890",
+      "additionalVcore": "1vCore $3.000 CLP",
+      "additionalRam": "2 GB $2.000 CLP",
+      "additionalStorage": "25 GB $2.000 CLP",
+      "id_plan": "1",
+      "id_user": "1"
+    },
+    {
+      "id": "1",
+      "time": "6 Meses",
+      "price": 56049,
+      "hostname": "HostTester",
+      "os": "Debian",
+      "passAdmin": "1234567890",
+      "additionalVcore": "Ninguno",
+      "additionalRam": "2 GB $2.000 CLP",
+      "additionalStorage": "Ninguno",
+      "id_plan": "2",
+      "id_user": "1"
+    },
+    {
+      "id": "0cd4",
+      "time": "3 Meses",
+      "price": 30332,
+      "hostname": "Servidor de prueba",
+      "os": "Debian",
+      "passAdmin": "12345",
+      "additionalVcore": "Ninguno",
+      "additionalRam": "Ninguno",
+      "additionalStorage": "50 GB $4.000 CLP",
+      "id_plan": "2",
+      "id_user": "1"
+    },
+    {
+      "id": "ad37",
+      "time": "1 Mes",
+      "price": 10990,
+      "hostname": "Servidor de prueba",
+      "os": "Debian",
+      "passAdmin": "12345",
+      "additionalVcore": "Ninguno",
+      "additionalRam": "Ninguno",
+      "additionalStorage": "50 GB $4.000 CLP",
+      "id_plan": "2",
+      "id_user": "1"
+    },
+    {
+      "id": "c3be",
+      "time": "3 Meses",
+      "price": 27572,
+      "hostname": "Hola",
+      "os": "CentOs",
+      "passAdmin": "098765",
+      "additionalVcore": "Ninguno",
+      "additionalRam": "Ninguno",
+      "additionalStorage": "Ninguno",
+      "id_plan": "3",
+      "id_user": "1"
+    }
+  ]
+}

@@ -10,3 +10,36 @@ Ignacio Uribe (planes): CRUD de sistema de planes, configuracion de servidor, si
 Nicolas Llancaqueo (administrador): Implementacion de seguridad/autenticacion para inicio de sesion, gestion/eliminacion de usuarios.
 
 Tareas en conjunto (cliente): sistema de inicio de sesion, registro de usuario, creacion de testimonios/comentarios, modificacion del perfil.
+
+
+# vega-hosting
+
+# Como ejecutar el proyecto
+
+## 1. Abrir una terminal en VSC
+
+Ve a la pestana "Terminal" en la parte superior y selecciona “New Terminal” o simplemente presiona "Ctrl + shift + ñ" para abrir la terminal integrada.
+
+## 2. Instalar dependencias del proyecto
+
+Ejecuta el siguiente comando para instalar todas las dependencias listadas en package.json 
+
+```
+npm install
+```
+
+## 3. Iniciar json-server en la terminal
+
+Ejecuta el siguiente comando para iniciar json-server
+
+```
+json-server --watch dataBase.json
+```
+
+## 4. Abrir otra terminal para live-server
+
+Ahora nuevamene ve a la pestana "Terminal" en la parte superior y selecciona “New Terminal” o simplemente presiona "Ctrl + shift + ñ" para una nueva terminal integrada y ejecuta el siguiente comando para iniciar live-server
+
+```
+npm run serve
+```
