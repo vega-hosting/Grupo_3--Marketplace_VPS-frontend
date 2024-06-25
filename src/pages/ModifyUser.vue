@@ -173,7 +173,7 @@ try {
     nameUser.value = user.value.name;
     emailUser.value = user.value.email;
     telUser.value = user.value.telephone;
-    nameCompany.value = user.value.name_company;
+    nameCompany.value = user.value.companyName;
     cityUser.value = user.value.city;
     addressUser.value = user.value.address
 } catch (error) {
@@ -187,7 +187,7 @@ async function changeDataUser() {
         name: nameUser.value,
         email: emailUser.value,
         telephone: telUser.value,
-        name_company: nameCompany.value,
+        companyName: nameCompany.value,
         city: cityUser.value,
         address: addressUser.value,
         password: user.value.password
