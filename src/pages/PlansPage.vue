@@ -71,13 +71,13 @@ import MainAboutUs from '@/components/MainAboutUs.vue';
 
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
-import { getPlans } from "@/services/service.js"
+import { getPlansForUser } from "@/services/service.js"
 
 const router = useRouter();
 
 const plans = ref([]);
 
-plans.value = await getPlans();
+plans.value = await getPlansForUser();
 
 function storageIdPlan(idPlan) {
     sessionStorage.setItem('plan', idPlan);
