@@ -13,30 +13,30 @@
                             class="col-md-3 d-inline-flex m-2">
                             <div class="card card-custom">
                                 <div class="card-header text-center" id="titulo-plan"> <strong>Tipo:</strong> {{
-                                    getDetailPlan(suscription).name }}</div>
+                                    suscription.name }}</div>
                                 <div class="card-body" id="desc-plan">
                                     <ul>
                                         <li><strong>Hostname:</strong> {{ suscription.hostname }}</li>
                                         <li><strong>Sistema Operativo:</strong> {{ suscription.os }}</li>
 
-                                        <li v-if="suscription.additionalVcore === 'Ninguno'"><strong>vCore:</strong> {{
-                                            getDetailPlan(suscription).vcore }} </li>
-                                        <li v-else><strong>vCore:</strong> {{ getDetailPlan(suscription).vcore }} + {{
+                                        <li v-if="suscription.addVcore === 'Ninguno'"><strong>vCore:</strong> {{
+                                            suscription.vcore }} </li>
+                                        <li v-else><strong>vCore:</strong> {{ suscription.vcore }} + {{
                                             vcoreAdd(suscription) }} vCore adicional</li>
 
-                                        <li v-if="suscription.additionalRam === 'Ninguno'"><strong>RAM:</strong> {{
-                                            getDetailPlan(suscription).ram }} GB</li>
-                                        <li v-else><strong>RAM:</strong> {{ getDetailPlan(suscription).ram }} + {{
+                                        <li v-if="suscription.addRam === 'Ninguno'"><strong>RAM:</strong> {{
+                                            suscription.ram }} GB</li>
+                                        <li v-else><strong>RAM:</strong> {{ suscription.ram }} + {{
                                             ramAdd(suscription) }} GB adicional</li>
 
-                                        <li v-if="suscription.additionalStorage === 'Ninguno'"><strong>Espacio:</strong>
-                                            {{ getDetailPlan(suscription).storage }} GB SSD</li>
-                                        <li v-else><strong>Espacio:</strong> {{ getDetailPlan(suscription).storage }} +
+                                        <li v-if="suscription.addStorage === 'Ninguno'"><strong>Espacio:</strong>
+                                            {{ suscription.storage }} GB SSD</li>
+                                        <li v-else><strong>Espacio:</strong> {{ suscription.storage }} +
                                             {{ storageAdd(suscription) }} GB adicional</li>
 
-                                        <li><strong>Velocidad:</strong> {{ getDetailPlan(suscription).bus }} Mbit/s</li>
+                                        <li><strong>Velocidad:</strong> {{ suscription.bus }} Mbit/s</li>
                                     </ul>
-                                    <h5>Duracion: {{ suscription.time }}</h5>
+                                    <h5>Duracion: {{ suscription.duration }}</h5>
                                     <h5>Total: $ {{ suscription.price }} CLP</h5>
                                 </div>
                             </div>
@@ -108,25 +108,18 @@ import MainAboutUs from '@/components/MainAboutUs.vue';
 
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
-import { getSubscriptionByIdUser, getPlans } from "@/services/service.js";
+import { getSubscriptionByIdUser } from "@/services/service.js";
 
 const router = useRouter();
-
-const plans = ref([]);
 
 const suscriptions = ref([]);
 
 suscriptions.value = await getSubscriptionByIdUser(sessionStorage.userId);
 
-plans.value = await getPlans();
-
-function getDetailPlan(subscription) {
-    const planId = subscription.id_plan;
-    return plans.value.find(plan => plan.id === planId);
-}
+console.log(suscriptions)
 
 const vcoreAdd = (suscription) => {
-    switch (suscription.additionalVcore) {
+    switch (suscription.addVcore) {
         case "1vCore $3.000 CLP":
             return 1;
 
@@ -139,7 +132,7 @@ const vcoreAdd = (suscription) => {
 }
 
 const ramAdd = (subscription) => {
-    switch (subscription.additionalRam) {
+    switch (subscription.addRam) {
         case "2 GB $2.000 CLP":
             return 2;
 
@@ -152,7 +145,7 @@ const ramAdd = (subscription) => {
 }
 
 const storageAdd = (subscription) => {
-    switch (subscription.additionalStorage) {
+    switch (subscription.addStorage) {
         case "25 GB $2.000 CLP":
             return 25;
 
