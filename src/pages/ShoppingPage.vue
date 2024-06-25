@@ -168,7 +168,7 @@ import MainAboutUs from '@/components/MainAboutUs.vue';
 
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
-import { getPlanById, createSubscription, updatePlan } from "@/services/service.js"
+import { getPlanForUserById, createSubscription, reduceQuantityPlan } from "@/services/service.js"
 
 const router = useRouter();
 
@@ -179,7 +179,7 @@ const user = sessionStorage.userId;
 const billing = ref('1 Mes');
 const plan = ref('');
 
-plan.value = await getPlanById(idPlan);
+plan.value = await getPlanForUserById(idPlan);
 
 const priceVcoreAdd = () => {
     switch (infoServer.additionalVcore) {
@@ -259,24 +259,22 @@ const calculatePrice = (billing) => {
 }
 
 async function purchasePlan() {
+
     const infoPurchase = {
-        time: billing.value,
+        duration: billing.value,
         price: calculatePrice(billing.value),
         hostname: infoServer.hostname,
         os: infoServer.os,
         passAdmin: infoServer.passAdmin,
-        additionalVcore: infoServer.additionalVcore,
-        additionalRam: infoServer.additionalRam,
-        additionalStorage: infoServer.additionalStorage,
-        id_plan: plan.value.id,
-        id_user: user
+        addVcore: infoServer.additionalVcore,
+        addRam: infoServer.additionalRam,
+        addStorage: infoServer.additionalStorage,
+        planId: plan.value.id,
+        userId: user
     };
 
-    plan.value.quantity--;
-
-    await updatePlan(idPlan, plan.value);
-
     await createSubscription(infoPurchase);
+    await reduceQuantityPlan(idPlan);
 
     router.push({ path: '/shopping/success' });
 
