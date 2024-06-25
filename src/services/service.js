@@ -1,21 +1,25 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:3000";
+const API_URL = "http://localhost:8081/v1/api";
 
 // Users
 
+//POST
+
 export const createUser = async (newUser) => {
     try {
-        await axios.post(`${API_URL}/user`, newUser);
+        await axios.post(`${API_URL}/users`, newUser);
     } catch (error) {
         console.error("Error al crear al usuario", error);
         alert("Ocurrio un error al registrar al usuario");
     }
 };
 
+//GET
+
 export const getUsers = async () => {
     try {
-        const response = await axios.get(`${API_URL}/user`);
+        const response = await axios.get(`${API_URL}/users`);
         return response.data;
     } catch (error) {
         console.error("Error al obtener los datos", error);
@@ -25,7 +29,7 @@ export const getUsers = async () => {
 
 export const getUserById = async (idUser) => {
     try {
-        const response = await axios.get(`${API_URL}/user/${idUser}`);
+        const response = await axios.get(`${API_URL}/users/${idUser}`);
         return response.data;
     } catch (error) {
         console.error("Error al obtener los datos", error);
@@ -33,18 +37,22 @@ export const getUserById = async (idUser) => {
     }
 };
 
+// PUT
+
 export const updateUser = async (idUser, newData) => {
     try {
-        await axios.put(`${API_URL}/user/${idUser}`, newData);
+        await axios.put(`${API_URL}/users/${idUser}`, newData);
     } catch (error) {
         console.error('Error al cambiar los datos', error);
         alert('Ocurrio un error al actualizar la información del usuario');
     }
 };
 
+// DELETE
+
 export const deleteUserById = async (idUser) => {
     try {
-        await axios.delete(`${API_URL}/user/${idUser}`);
+        await axios.delete(`${API_URL}/users/${idUser}`);
     } catch (error) {
         console.error("Error al eliminar al usuario", error);
         alert("Ocurrio un error al eliminar los datos del usuario");
@@ -52,6 +60,7 @@ export const deleteUserById = async (idUser) => {
 };
 // Plans
 
+// POST
 export const createPlan = async (newPlan) => {
     try {
         await axios.post(`${API_URL}/plans`,newPlan);
@@ -61,9 +70,10 @@ export const createPlan = async (newPlan) => {
     }
 }
 
-export const getPlans = async () => {
+// GET
+export const getPlansForUser = async () => {
     try {
-        const response = await axios.get(`${API_URL}/plans`);
+        const response = await axios.get(`${API_URL}/plans/user`);
         return response.data;
     } catch (error) {
         console.error('Error al obtener los datos de los planes', error);
@@ -71,9 +81,9 @@ export const getPlans = async () => {
     }
 }
 
-export const getPlanById = async (idPlan) => {
+export const getPlanForUserById = async (idPlan) => {
     try {
-        const response = await axios.get(`${API_URL}/plans/${idPlan}`);
+        const response = await axios.get(`${API_URL}/plans/user/plan/${idPlan}`);
         return response.data;
     } catch (error) {
         console.error('Error al obtener los datos del plan', error);
@@ -81,14 +91,27 @@ export const getPlanById = async (idPlan) => {
     }
 }
 
-export const updatePlan = async (idPlan, newData) => {
+// PUT
+
+export const updatePlan = async (newData) => {
     try {
-        await axios.put(`${API_URL}/plans/${idPlan}`, newData);
+        await axios.put(`${API_URL}/plans`, newData);
     } catch (error) {
         console.error('Error al cambiar los datos', error);
         alert('Ocurrio un error al actualizar la información del plan');
     }
 }
+
+export const reduceQuantityPlan = async (idPlan) => {
+    try {
+        await axios.put(`${API_URL}/plans/user/${idPlan}/reduce-quantity`);
+    } catch (error) {
+        console.error('Error al cambiar los datos', error);
+        alert('Ocurrio un error al actualizar la información del plan');
+    }
+}
+
+// DELETE
 
 export const deletePlanById = async (idPlan) => {
     try {
@@ -101,18 +124,21 @@ export const deletePlanById = async (idPlan) => {
 
 // Subscriptions
 
+// POST
 export const createSubscription = async (infoSubs) => {
     try {
-        await axios.post(`${API_URL}/subscription`, infoSubs);
+        await axios.post(`${API_URL}/subscriptions`, infoSubs);
     } catch (error) {
         console.error('Error al registrar la compra', error);
         alert('Ocurrio un error al registrar la compra');
     }
 };
 
+// GET
+
 export const getSubscriptionByIdUser = async (idUser) => {
     try {
-        const response = await axios.get(`${API_URL}/subscription?id_user=${idUser}`);
+        const response = await axios.get(`${API_URL}/subscriptions/user/${idUser}`);
         return response.data;
     } catch (error) { 
         console.error('Error al obtener los datos', error);
