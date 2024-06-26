@@ -65,7 +65,7 @@
 </template>
 
 <script setup>
-import { getPlans, createPlan, updatePlan } from "@/services/service.js"
+import { getPlansForAdmin, createPlan, updatePlan } from "@/services/service.js"
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 
@@ -91,7 +91,7 @@ async function addPlan() {
             quantity: quantity.value
         };
 
-        const existingPlans = await getPlans();
+        const existingPlans = await getPlansForAdmin();
 
         let existingPlan = existingPlans.find(plan =>
             plan.name === newPlan.name &&
@@ -104,7 +104,7 @@ async function addPlan() {
 
         if (existingPlan) {
             existingPlan.quantity += newPlan.quantity;
-            await updatePlan(existingPlan.id, existingPlan);
+            await updatePlan(existingPlan);
         } else {
             await createPlan(newPlan);
         }
