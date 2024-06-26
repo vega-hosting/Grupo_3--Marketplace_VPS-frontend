@@ -70,10 +70,21 @@ export const createPlan = async (newPlan) => {
     }
 }
 
-// GET
+// GET USER
 export const getPlansForUser = async () => {
     try {
         const response = await axios.get(`${API_URL}/plans/user`);
+        return response.data;
+    } catch (error) {
+        console.error('Error al obtener los datos de los planes', error);
+        alert('Ocurrio un error al obtener los datos de los planes');
+    }
+}
+
+//GET USER ADMIN
+export const getPlansForAdmin = async () => {
+    try {
+        const response = await axios.get(`${API_URL}/plans/admin`);
         return response.data;
     } catch (error) {
         console.error('Error al obtener los datos de los planes', error);

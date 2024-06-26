@@ -91,7 +91,7 @@
 <script setup>
 import MainAboutUsAdmin from '@/components/MainAboutUsAdmin.vue';
 import UserNavbarAdmin from '@/components/UserNavbarAdmin.vue';
-import { getPlans, deletePlanById } from "@/services/service.js";
+import { getPlansForAdmin, deletePlanById } from "@/services/service.js";
 import { ref, onMounted } from 'vue';
 
 const showPlanPopover = ref(false);
@@ -101,7 +101,7 @@ const popoverStyles = ref({});
 //consumo de api local .json y llamado de datos planes
 onMounted(async () => {
     try {
-        plans.value = await getPlans();
+        plans.value = await getPlansForAdmin();
     } catch (error) {
         console.error('Error al obtener los datos de los planes', error);
         alert('Ocurrió un error al obtener los datos de los planes');
