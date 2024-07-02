@@ -181,7 +181,7 @@ async function registerUser() {
             name: nameUser.value,
             email: emailUser.value,
             telephone: telUser.value,
-            name_company: nameCompany.value,
+            companyName: nameCompany.value,
             city: cityUser.value,
             address: addressUser.value,
             password: passwordUser.value
